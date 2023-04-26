@@ -31,7 +31,8 @@ gradle-app.setting
 
 ### Gradle Patch ###
 # Java heap dump
-*.hprof### Java template
+*.hprof
+### Java template
 # Compiled class file
 *.class
 

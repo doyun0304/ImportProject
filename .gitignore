@@ -15,7 +15,7 @@
 .idea
 .idea/*.xml
 *.iml
-out
+out/
 gen
 build
 rebel.xml

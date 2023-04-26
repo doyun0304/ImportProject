@@ -14,6 +14,7 @@
 # IntelliJ project files
 .idea
 .idea/*.xml
+*.idea
 *.iml
 out/
 gen

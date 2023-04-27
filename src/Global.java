@@ -4,5 +4,5 @@
  */
 
 public class Global {
-
+    public static final String working = "허태윤";
 }

@@ -2,12 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ImportProject {
+    public static JFrame screen;
     public static void main(String[] args) {
         showScreen(1080, 840);
     }
 
     public static void showScreen(int screenWidth, int screenHeight) {
-        JFrame screen = new JFrame();
+        screen = new JFrame();
         screen.setTitle("Room Escape");
         screen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         screen.setResizable(false);

@@ -39,6 +39,9 @@ public class Vec2D {
         }
     }
 
+    public double dist(Vec2D v){
+        return Math.sqrt((x-v.x)*(x-v.x)+(y-v.y)*(y-v.y));
+    }
     public static Vec2D add(Vec2D a, Vec2D b){
         return new Vec2D(a.x+b.x, a.y+b.y);
     }

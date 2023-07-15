@@ -11,8 +11,7 @@ public class MainKeyListener implements KeyListener {
     GameManager gameManager;
     Player player;
 
-    private int moveCnt = 0;
-    private char preC = ' ';
+    private int upCnt = 0, downCnt = 0, leftCnt = 0, rightCnt = 0;
 
     public MainKeyListener(GameManager gameManager){
         this.gameManager = gameManager;
@@ -27,126 +26,104 @@ public class MainKeyListener implements KeyListener {
     public void keyPressed(KeyEvent e) {
         player = gameManager.getPlayer();
         char c = e.getKeyChar();
-        if(preC != c) {
-            if(preC=='w') {
-                while(moveCnt != 0) {
-                    //TODO: key delay
-
-                    player.setDirection(Direction.UP);
-                    player.move();
-                    player.updateMoveCondition(false);
-                    moveCnt++; moveCnt %= 4;
-                }
-            }
-            if(preC=='a') {
-                while(moveCnt != 0) {
-                    //TODO: key delay
-
-                    player.setDirection(Direction.LEFT);
-                    player.move();
-                    player.updateMoveCondition(false);
-                    moveCnt++; moveCnt %= 4;
-                }
-            }
-            if(preC=='s') {
-                while(moveCnt != 0) {
-                    //TODO: key delay
-
-                    player.setDirection(Direction.DOWN);
-                    player.move();
-                    player.updateMoveCondition(false);
-                    moveCnt++; moveCnt %= 4;
-                }
-            }
-            if(preC=='d') {
-                while(moveCnt != 0) {
-                    //TODO: key delay
-
-                    player.setDirection(Direction.RIGHT);
-                    player.move();
-                    player.updateMoveCondition(false);
-                    moveCnt++; moveCnt %= 4;
-                }
-            }
-
-            preC = c;
-        }
 
         if(c=='w') {
+            moveClear('a');
+            moveClear('s');
+            moveClear('d');
+
             player.setDirection(Direction.UP);
             player.move();
             player.updateMoveCondition(false);
-            moveCnt++; moveCnt %= 4;
+            upCnt++; upCnt %= 4;
         }
         if(c=='a') {
+            moveClear('w');
+            moveClear('s');
+            moveClear('d');
+
             player.setDirection(Direction.LEFT);
             player.move();
             player.updateMoveCondition(false);
-            moveCnt++; moveCnt %= 4;
+            leftCnt++; leftCnt %= 4;
         }
         if(c=='s') {
+            moveClear('w');
+            moveClear('a');
+            moveClear('d');
+
             player.setDirection(Direction.DOWN);
             player.move();
             player.updateMoveCondition(false);
-            moveCnt++; moveCnt %= 4;
+            downCnt++; downCnt %= 4;
         }
         if(c=='d') {
+            moveClear('w');
+            moveClear('a');
+            moveClear('s');
+
             player.setDirection(Direction.RIGHT);
             player.move();
             player.updateMoveCondition(false);
-            moveCnt++; moveCnt %= 4;
+            rightCnt++; rightCnt %= 4;
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         char c = e.getKeyChar();
-        if(c=='w') {
-            while(moveCnt != 0) {
+        if(c=='w'||c=='a'||c=='s'||c=='d') {
+            moveClear('w');
+            moveClear('a');
+            moveClear('s');
+            moveClear('d');
+            player.updateMoveCondition(true);
+        }
+    }
+
+    private void moveClear(char ch) {
+        if(ch=='w') {
+            while(upCnt != 0) {
                 //TODO: key delay
 
                 player.setDirection(Direction.UP);
                 player.move();
                 player.updateMoveCondition(false);
-                moveCnt++; moveCnt %= 4;
+                upCnt++; upCnt %= 4;
             }
-            player.updateMoveCondition(true);
         }
 
-        if(c=='a') {
-            while(moveCnt != 0) {
+        if(ch=='a') {
+            while(leftCnt != 0) {
                 //TODO: key delay
 
                 player.setDirection(Direction.LEFT);
                 player.move();
                 player.updateMoveCondition(false);
-                moveCnt++; moveCnt %= 4;
+                leftCnt++; leftCnt %= 4;
             }
-            player.updateMoveCondition(true);
         }
 
-        if(c=='s') {
-            while(moveCnt != 0) {
+        if(ch=='s') {
+            while(downCnt != 0) {
                 //TODO: key delay
 
                 player.setDirection(Direction.DOWN);
                 player.move();
                 player.updateMoveCondition(false);
-                moveCnt++; moveCnt %= 4;
+                downCnt++; downCnt %= 4;
             }
-            player.updateMoveCondition(true);
         }
 
-        if(c=='d') {
-            while(moveCnt != 0) {
+        if(ch=='d') {
+            while(rightCnt != 0) {
                 //TODO: key delay
 
                 player.setDirection(Direction.RIGHT);
                 player.move();
                 player.updateMoveCondition(false);
-                moveCnt++; moveCnt %= 4;
+                rightCnt++; rightCnt %= 4;
             }
-            player.updateMoveCondition(true);
         }
     }
 }

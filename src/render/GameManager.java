@@ -14,8 +14,8 @@ public class GameManager {
 
     public GameManager(){
         stages = new ArrayList<>();
-        player = new Player();
         gamePanel = new GamePanel(this);
+        player = new Player(gamePanel);
     }
 
     public void initiate(JFrame frame)  {

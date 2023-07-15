@@ -1,5 +1,7 @@
 package world.stage;
 
+import util.Vec2D;
+
 import java.util.ArrayList;
 
 public class RoomBuilder {
@@ -7,11 +9,13 @@ public class RoomBuilder {
     int roomId;
     String roomName;
     ArrayList<Obstacle> obstacles;
+    Vec2D initialPlayerPos;
 
-    public RoomBuilder(int stageId, int roomId, String roomName){
+    public RoomBuilder(int stageId, int roomId, String roomName, Vec2D initialPlayerPos){
         this.stageId = stageId;
         this.roomId = roomId;
         this.roomName = roomName;
+        this.initialPlayerPos = initialPlayerPos;
         obstacles = new ArrayList<>();
     }
 
@@ -28,6 +32,6 @@ public class RoomBuilder {
     }
 
     public Room build(){
-        return new Room(stageId, roomId, roomName);
+        return new Room(stageId, roomId, roomName, initialPlayerPos);
     }
 }

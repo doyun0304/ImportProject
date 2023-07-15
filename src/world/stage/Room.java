@@ -13,6 +13,7 @@ public class Room {
     private String roomName;
     private Vec2D position;
     private Vec2D size;
+    private Vec2D initialPlayerPos;
 
     public Room(int roomId, String roomName){
         this.roomId = roomId;
@@ -24,6 +25,11 @@ public class Room {
     public Room(int stageId, int roomId, String roomName){
         this(roomId, roomName);
         this.stageId = stageId;
+    }
+
+    public Room(int stageId, int roomId, String roomName, Vec2D initialPlayerPos){
+        this(stageId, roomId, roomName);
+        this.initialPlayerPos = initialPlayerPos;
     }
 
     public void setStageId(int stageId) {

@@ -31,6 +31,9 @@ public class GamePanel extends JPanel implements Runnable{
         requestFocus();
         keyListener = new MainKeyListener(gameManager);
         addKeyListener(keyListener);
+        setBackground(Color.CYAN);
+        setBorder(Borders.LOWEREDBEVEL);
+        setVisible(true);
     }
 
     public void stageStart(){

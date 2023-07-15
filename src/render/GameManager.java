@@ -20,9 +20,6 @@ public class GameManager {
 
     public void initiate(JFrame frame)  {
         gamePanel.add(new ImageLabel(Images.gshsImage), BorderLayout.PAGE_START);
-        gamePanel.setBackground(Color.BLUE);
-        gamePanel.setBorder(Borders.LOWEREDBEVEL);
-        gamePanel.setVisible(true);
         frame.add(gamePanel);
         gamePanel.stageStart();
     }

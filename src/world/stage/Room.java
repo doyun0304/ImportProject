@@ -1,3 +1,5 @@
+package world.stage;
+
 import java.util.ArrayList;
 
 public class Room {

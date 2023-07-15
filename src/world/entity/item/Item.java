@@ -1,3 +1,5 @@
+package world.entity.item;
+
 public class Item {
     String name;
 

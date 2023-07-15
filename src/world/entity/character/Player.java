@@ -1,4 +1,6 @@
-import global.Vec2D;
+package world.entity.character;
+
+import util.Vec2D;
 
 public class Player {
     Vec2D position;

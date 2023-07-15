@@ -9,7 +9,7 @@ public class ImportProject {
     public static GameManager game = new GameManager();
     public static void main(String[] args) {
         try {
-            showScreen(1080, 840);
+            showScreen(1080, 600);
         } catch(IOException e){
             e.printStackTrace();
         }

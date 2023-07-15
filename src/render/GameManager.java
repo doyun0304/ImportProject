@@ -10,23 +10,28 @@ import java.util.ArrayList;
 public class GameManager {
     private ArrayList<Stage> stages;
     private Player player;
-    private JPanel stagePanel;
+    private PlayPanel stagePanel;
+    private ToolPanel toolPanel;
 
     public GameManager(){
         stages = new ArrayList<>();
         player = new Player();
-        stagePanel = new JPanel();
+        stagePanel = new PlayPanel();
+        toolPanel = new ToolPanel();
     }
 
     public void initiate(JFrame frame)  {
-        stagePanel.add(new JTextField());
-        stagePanel.setSize(200, 200);
-        stagePanel.setLayout(new BorderLayout());
+        stagePanel.add(new ImageLabel(Images.gshsImage));
         stagePanel.setBackground(Color.WHITE);
+        stagePanel.setBorder(Borders.LOWEREDBEVEL);
+        stagePanel.setVisible(true);
+
+        toolPanel.setBackground(Color.BLACK);
+        toolPanel.add(new JButton("BUTTON"));
+        toolPanel.setBorder(Borders.BLACKLINE);
+        toolPanel.setVisible(true);
 
         frame.add(stagePanel, BorderLayout.CENTER);
-        frame.add(new ImagePanel(Images.gshsImage), BorderLayout.NORTH);
-
-        stagePanel.setVisible(true);
+        frame.add(toolPanel, BorderLayout.SOUTH);
     }
 }

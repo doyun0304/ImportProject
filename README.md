@@ -1,2 +1,2 @@
-# ImportProject
+# main.ImportProject
 gshs-import project

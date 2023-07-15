@@ -1,20 +1,32 @@
+package main;
+
+import render.GameManager;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class ImportProject {
-    public static JFrame screen;
-    public static final int cellSize = 40;
+    private static JFrame screen;
+    public static final int screenWidth = 1080;
+    public static final int screenHeight = 800;
+    public static GameManager gameManager;
+
     public static void main(String[] args) {
-        showScreen(1080, 840);
+        gameManager = new GameManager();
+        showScreen(screenWidth, screenHeight);
     }
 
     public static void showScreen(int screenWidth, int screenHeight) {
         screen = new JFrame();
-        screen.setTitle("world.stage.Room Escape");
+        screen.setTitle("Room Escape");
+        System.out.println(gameManager);
         screen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         screen.setResizable(false);
+        screen.setSize(screenWidth, screenHeight);
         screen.setPreferredSize(new Dimension(screenWidth, screenHeight));
         screen.getContentPane().setBackground(new Color(0,0,0));
+        gameManager.initiate(screen);
+
         screen.setVisible(true);
     }
 }

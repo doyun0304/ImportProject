@@ -1,25 +1,26 @@
 package world.entity.character;
 
+import world.entity.item.Item;
 import java.util.ArrayList;
 
 public class Inventory {
     ArrayList<Item> itemList;
-    boolean isShowing;
+    boolean isDisplayed;
 
     public Inventory() {
         itemList = new ArrayList<>();
-        isShowing = false;
+        isDisplayed = false;
     }
 
     void display() {
-        
+
     }
 
-    void pushItem(Item item) {
+    void addItem(Item item) {
         itemList.add(item);
     }
 
-    Item popItem(int i) {
+    Item removeItem(int i) {
         Item item = itemList.get(i);
         itemList.remove(i);
 

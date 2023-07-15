@@ -1,13 +1,13 @@
 package util;
 
 public class Vec2D {
-    double x;
-    double y;
+    public int x;
+    public int y;
     public Vec2D(){
         this.x = 0;
         this.y = 0;
     }
-    public Vec2D(double x, double y) {
+    public Vec2D(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -22,12 +22,12 @@ public class Vec2D {
         y = y-v.y;
     }
 
-    public void mul(double f){
+    public void mul(int f){
         x = f*x;
         y = f*y;
     }
 
-    public void div(double f){
+    public void div(int f){
         try{
             x = x/f;
             y = y/f;
@@ -48,11 +48,11 @@ public class Vec2D {
         return new Vec2D(a.x-b.x, a.y-b.y);
     }
 
-    public static Vec2D mul(Vec2D a, double f){
+    public static Vec2D mul(Vec2D a, int f){
         return new Vec2D(f*a.x, f*a.y);
     }
 
-    public static Vec2D div(Vec2D a, double f){
+    public static Vec2D div(Vec2D a, int f){
         try{
             return new Vec2D(a.x/f, a.y/f);
         } catch (Exception e){

@@ -15,7 +15,7 @@ public class GameManager {
     public GameManager(){
         stages = new ArrayList<>();
         player = new Player();
-        gamePanel = new GamePanel();
+        gamePanel = new GamePanel(this);
     }
 
     public void initiate(JFrame frame)  {
@@ -25,5 +25,9 @@ public class GameManager {
         gamePanel.setVisible(true);
         frame.add(gamePanel);
         gamePanel.stageStart();
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 }

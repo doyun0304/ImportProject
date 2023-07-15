@@ -14,9 +14,10 @@ public class GamePanel extends JPanel implements Runnable{
     StagePanel stagePanel;
     ToolPanel toolPanel;
     MainKeyListener keyListener;
-    GameManager game;
+    GameManager gameManager;
 
-    public GamePanel(){
+    public GamePanel(GameManager gameManager){
+        this.gameManager = gameManager;
         setDoubleBuffered(true);
         stagePanel = new StagePanel();
         toolPanel = new ToolPanel();
@@ -26,8 +27,9 @@ public class GamePanel extends JPanel implements Runnable{
         add(stagePanel);
         add(toolPanel);
         setFocusable(true);
-        game = ImportProject.getGame();
-        keyListener = new MainKeyListener(game);
+        requestFocus();
+        keyListener = new MainKeyListener(gameManager);
+        addKeyListener(keyListener);
     }
 
     public void stageStart(){
@@ -40,7 +42,7 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(Color.GREEN);
-        g2.drawRect(100, 100, tileSize, tileSize);
+        g2.drawRect(gameManager.getPlayer().getPosition().x*tileSize, gameManager.getPlayer().getPosition().y*tileSize, tileSize, tileSize);
         g2.dispose();
     }
 

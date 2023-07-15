@@ -1,8 +1,8 @@
 package util;
 
 public class Vec2D {
-    int x;
-    int y;
+    public int x;
+    public int y;
     public Vec2D(){
         this.x = 0;
         this.y = 0;

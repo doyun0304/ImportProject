@@ -1,6 +1,7 @@
 package main;
 
 import render.GameManager;
+import world.entity.character.Direction;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -21,18 +22,34 @@ public class MainKeyListener implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         char c = e.getKeyChar();
-        if(c=='w') upPressed = true;
-        else if(c=='a') leftPressed = true;
-        else if(c=='s') downPressed = true;
-        else if(c=='d') rightPressed = true;
+        if(c=='w') {
+            upPressed = true;
+            gameManager.getPlayer().setDirection(Direction.TOP);
+            gameManager.getPlayer().move();
+        }
+        if(c=='a') {
+            leftPressed = true;
+            gameManager.getPlayer().setDirection(Direction.LEFT);
+            gameManager.getPlayer().move();
+        }
+        if(c=='s') {
+            downPressed = true;
+            gameManager.getPlayer().setDirection(Direction.BOTTOM);
+            gameManager.getPlayer().move();
+        }
+        if(c=='d') {
+            rightPressed = true;
+            gameManager.getPlayer().setDirection(Direction.RIGHT);
+            gameManager.getPlayer().move();
+        }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         char c = e.getKeyChar();
         if(c=='w') upPressed = false;
-        else if(c=='a') leftPressed = false;
-        else if(c=='s') downPressed = false;
-        else if(c=='d') rightPressed = false;
+        if(c=='a') leftPressed = false;
+        if(c=='s') downPressed = false;
+        if(c=='d') rightPressed = false;
     }
 }

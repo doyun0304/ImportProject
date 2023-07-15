@@ -10,6 +10,7 @@ public class StageBuilder {
     public StageBuilder(int stageId, String stageName){
         this.stageId = stageId;
         this.stageName = stageName;
+        rooms = new ArrayList<>();
     }
 
     public void addRoom(Room room){

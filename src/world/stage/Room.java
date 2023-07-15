@@ -2,12 +2,12 @@ package world.stage;
 
 import util.Vec2D;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Room {
-    ArrayList<Thing> obstacles = new ArrayList<>();
-    ArrayList<Thing> interactables = new ArrayList<>();
-    private Background background;
+    ArrayList<Obstacle> obstacles = new ArrayList<>();
+    private Color backgroundColor;
     private int stageId;
     private int roomId;
     private String roomName;
@@ -17,6 +17,13 @@ public class Room {
     public Room(int roomId, String roomName){
         this.roomId = roomId;
         this.roomName = roomName;
+        position = new Vec2D();
+        size = new Vec2D(22,18);
+    }
+
+    public Room(int stageId, int roomId, String roomName){
+        this(roomId, roomName);
+        this.stageId = stageId;
     }
 
     public void setStageId(int stageId) {
@@ -34,19 +41,12 @@ public class Room {
     int obstacleCount = 0;
     int interactableCount = 0;
 
-    public void addObstacle(Thing obstacle) {
+    public void addObstacle(Obstacle obstacle) {
         obstacles.add(obstacle);
         obstacleCount++;
     }
 
-    public void addInteractable(Thing interactable) {
-        interactables.add(interactable);
-        interactableCount++;
-    }
-
     public void show() {
-        background.show();
         for(int i=0; i<obstacleCount; i++) obstacles.get(i).show();
-        for(int i=0; i<interactableCount; i++) interactables.get(i).show();
     }
 }

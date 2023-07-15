@@ -1,12 +1,12 @@
 package world.stage;
 
 import util.Vec2D;
-public class Thing {
+public class Obstacle {
     Vec2D position;
     Vec2D size;
-    boolean collision;
+    boolean collision = true;
 
-    Thing(Vec2D position, Vec2D size){
+    Obstacle(Vec2D position, Vec2D size){
         this.position = position;
         this.size = size;
     }

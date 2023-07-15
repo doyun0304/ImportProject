@@ -3,7 +3,7 @@ package world.stage;
 import java.util.ArrayList;
 
 public class Stage {
-    ArrayList<Room> rooms = new ArrayList<Room>();
+    ArrayList<Room> rooms = new ArrayList<>();
     int stageId;
     int roomCount = 0;
     String stageName = "";

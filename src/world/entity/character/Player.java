@@ -14,7 +14,6 @@ public class Player {
     private DVec2D position;
     Direction direction;
 
-    public int n = 4;
     private double velocity = 0.25;
     private int moveCondition;
     GamePanel gamePanel;

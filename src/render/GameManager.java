@@ -4,7 +4,6 @@ import world.entity.character.Player;
 import world.stage.Stage;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 
 public class GameManager {
@@ -18,8 +17,7 @@ public class GameManager {
         player = new Player(gamePanel);
     }
 
-    public void initiate(JFrame frame)  {
-        gamePanel.add(new ImageLabel(Images.gshsImage), BorderLayout.PAGE_START);
+    public void initiate(JFrame frame) {
         frame.add(gamePanel);
         gamePanel.stageStart();
     }

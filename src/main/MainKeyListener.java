@@ -21,10 +21,14 @@ public class MainKeyListener implements KeyListener {
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
+    public synchronized void keyPressed(KeyEvent e) {
         //TODO: key delay
         player = gameManager.getPlayer();
         char c = e.getKeyChar();
+
+        if(c=='p') {
+            gameManager.switchMode();
+        }
 
         if(c=='w') {
             moveClear('a');
@@ -71,6 +75,7 @@ public class MainKeyListener implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         char c = e.getKeyChar();
+
         if(c=='w'||c=='a'||c=='s'||c=='d') {
             moveClear('w');
             moveClear('a');

@@ -5,33 +5,37 @@ import util.Vec2D;
 import java.util.ArrayList;
 
 public class RoomBuilder {
-    int stageId;
-    int roomId;
-    String roomName;
-    ArrayList<Obstacle> obstacles;
-    Vec2D initialPlayerPos;
+    private int stageId;
+    private String roomName;
+    private ArrayList<Obstacle> obstacles;
+    private Vec2D size;
+    private Vec2D initialPlayerPos;
+    private BackgroundManager backgroundManager;
 
-    public RoomBuilder(int stageId, int roomId, String roomName, Vec2D initialPlayerPos){
+    public RoomBuilder(int stageId, String roomName, Vec2D size, Vec2D initialPlayerPos){
         this.stageId = stageId;
-        this.roomId = roomId;
         this.roomName = roomName;
+        this.size = size;
         this.initialPlayerPos = initialPlayerPos;
         obstacles = new ArrayList<>();
+        backgroundManager = new BackgroundManager(size);
     }
 
-    public void setStageId(int stageId) {
+    public RoomBuilder(int stageId, String roomName, Vec2D initialPlayerPos){
         this.stageId = stageId;
-    }
-
-    public void setRoomName(String roomName) {
         this.roomName = roomName;
+        size = new Vec2D(22, 10);
+        this.initialPlayerPos = initialPlayerPos;
+        obstacles = new ArrayList<>();
+        backgroundManager = new BackgroundManager(size);
     }
 
-    public void setObstacles(ArrayList<Obstacle> obstacles) {
-        this.obstacles = obstacles;
+    public BackgroundManager getBackgroundManager() {
+        return backgroundManager;
     }
 
     public Room build(){
-        return new Room(stageId, roomId, roomName, initialPlayerPos);
+        Room output = new Room(stageId, roomName, size, initialPlayerPos, backgroundManager);
+        return output;
     }
 }

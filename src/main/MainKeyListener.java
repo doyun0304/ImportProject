@@ -1,6 +1,6 @@
 package main;
 
-import world.entity.character.Direction;
+import world.entity.Direction;
 import world.entity.character.Player;
 
 import java.awt.event.KeyEvent;

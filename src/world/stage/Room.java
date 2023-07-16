@@ -6,28 +6,28 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Room {
-    ArrayList<Obstacle> obstacles = new ArrayList<>();
+    private ArrayList<Obstacle> obstacles = new ArrayList<>();
     private Color backgroundColor;
     private int stageId;
-    private int roomId;
     private String roomName;
     private Vec2D size;
     private Vec2D initialPlayerPos;
+    private BackgroundManager backgroundManager;
 
-    public Room(int roomId, String roomName){
-        this.roomId = roomId;
-        this.roomName = roomName;
-        size = new Vec2D(22,18);
-    }
-
-    public Room(int stageId, int roomId, String roomName){
-        this(roomId, roomName);
+    public Room(int stageId, String roomName, Vec2D size, Vec2D initialPlayerPos, BackgroundManager backgroundManager) {
         this.stageId = stageId;
+        this.roomName = roomName;
+        this.size = size;
+        this.initialPlayerPos = initialPlayerPos;
+        this.backgroundManager = backgroundManager;
     }
 
-    public Room(int stageId, int roomId, String roomName, Vec2D initialPlayerPos){
-        this(stageId, roomId, roomName);
-        this.initialPlayerPos = initialPlayerPos;
+    public void draw() {
+        for (Obstacle obstacle : obstacles) obstacle.show();
+    }
+
+    public Vec2D getSize() {
+        return size;
     }
 
     public void setStageId(int stageId) {
@@ -42,7 +42,7 @@ public class Room {
         obstacles.add(obstacle);
     }
 
-    public void draw() {
-        for (Obstacle obstacle : obstacles) obstacle.show();
+    public BackgroundManager getBackgroundManager() {
+        return backgroundManager;
     }
 }

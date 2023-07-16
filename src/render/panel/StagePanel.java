@@ -1,4 +1,6 @@
-package render;
+package render.panel;
+
+import main.GameManager;
 
 import javax.swing.*;
 import java.awt.*;

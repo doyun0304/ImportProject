@@ -1,5 +1,6 @@
-package render;
+package main;
 
+import render.panel.GamePanel;
 import world.entity.character.Player;
 import world.stage.Stage;
 

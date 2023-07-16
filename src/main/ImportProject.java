@@ -1,7 +1,5 @@
 package main;
 
-import render.GameManager;
-
 import javax.swing.*;
 import java.awt.*;
 

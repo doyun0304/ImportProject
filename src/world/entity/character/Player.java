@@ -1,6 +1,6 @@
 package world.entity.character;
 
-import render.GamePanel;
+import render.panel.GamePanel;
 import render.Images;
 import util.DVec2D;
 import util.Vec2D;

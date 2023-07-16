@@ -1,6 +1,11 @@
-package render;
+package render.panel;
 
 import main.MainKeyListener;
+import main.GameManager;
+import render.layout.linear.LinearConstraints;
+import render.layout.linear.LinearLayout;
+import render.layout.linear.LinearSpace;
+import render.layout.linear.Orientation;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,13 +23,13 @@ public class GamePanel extends JPanel implements Runnable{
         this.gameManager = gameManager;
         keyListener = new MainKeyListener(gameManager);
         stagePanel = new StagePanel(gameManager);
-
         toolPanel = new ToolPanel(gameManager);
+
         stagePanel.setVisible(true);
         toolPanel.setVisible(true);
-        setLayout(new GridLayout(0,1));
-        add(stagePanel);
-        add(toolPanel);
+        setLayout(new LinearLayout(Orientation.VERTICAL, 0));
+        add(stagePanel, new LinearConstraints().setWeight(9).setLinearSpace(LinearSpace.MATCH_PARENT));
+        add(toolPanel, new LinearConstraints().setWeight(1).setLinearSpace(LinearSpace.MATCH_PARENT));
         setDoubleBuffered(true);
         setFocusable(true);
         requestFocus();

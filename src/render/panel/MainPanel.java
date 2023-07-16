@@ -1,4 +1,4 @@
-package render;
+package render.panel;
 
 import javax.swing.*;
 

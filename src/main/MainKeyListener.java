@@ -1,6 +1,5 @@
 package main;
 
-import render.GameManager;
 import world.entity.character.Direction;
 import world.entity.character.Player;
 

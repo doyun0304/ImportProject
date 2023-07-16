@@ -36,6 +36,7 @@ public class RoomBuilder {
 
     public Room build(){
         Room output = new Room(stageId, roomName, size, initialPlayerPos, backgroundManager);
+        backgroundManager.setRoom(output);
         return output;
     }
 }

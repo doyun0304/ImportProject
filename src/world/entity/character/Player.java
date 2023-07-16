@@ -1,9 +1,10 @@
 package world.entity.character;
 
-import render.GamePanel;
+import render.panel.GamePanel;
 import render.Images;
 import util.DVec2D;
 import util.Vec2D;
+import world.entity.Direction;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -14,7 +15,6 @@ public class Player {
     private DVec2D position;
     Direction direction;
 
-    public int n = 4;
     private double velocity = 0.25;
     private int moveCondition;
     GamePanel gamePanel;
@@ -55,7 +55,7 @@ public class Player {
     }
 
     public void draw(Graphics2D g2){
-        g2.drawImage(img[direction.ordinal()][moveCondition], (int)(position.x*tileSize), (int)(position.y*tileSize), null);
+        g2.drawImage(img[direction.toIndex()][moveCondition], (int)(position.x*tileSize), (int)(position.y*tileSize), null);
     }
 
     private boolean canMove(Direction direction){

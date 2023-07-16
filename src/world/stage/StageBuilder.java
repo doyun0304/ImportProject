@@ -3,9 +3,9 @@ package world.stage;
 import java.util.ArrayList;
 
 public class StageBuilder {
-    int stageId;
-    String stageName;
-    ArrayList<Room> rooms;
+    private int stageId;
+    private String stageName;
+    private ArrayList<Room> rooms;
 
     public StageBuilder(int stageId, String stageName){
         this.stageId = stageId;
@@ -18,16 +18,8 @@ public class StageBuilder {
         rooms.add(room);
     }
 
-    public void setRooms(ArrayList<Room> rooms) {
-        this.rooms = rooms;
-    }
-
-    public void setStageId(int stageId) {
-        this.stageId = stageId;
-    }
-
-    public void setStageName(String stageName) {
-        this.stageName = stageName;
+    public int getStageId() {
+        return stageId;
     }
 
     public Stage build(){

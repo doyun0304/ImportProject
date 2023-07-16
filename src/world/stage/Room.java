@@ -6,53 +6,43 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Room {
-    ArrayList<Obstacle> obstacles = new ArrayList<>();
+    private ArrayList<Obstacle> obstacles = new ArrayList<>();
     private Color backgroundColor;
     private int stageId;
-    private int roomId;
     private String roomName;
-    private Vec2D position;
     private Vec2D size;
     private Vec2D initialPlayerPos;
+    private BackgroundManager backgroundManager;
 
-    public Room(int roomId, String roomName){
-        this.roomId = roomId;
-        this.roomName = roomName;
-        position = new Vec2D();
-        size = new Vec2D(22,18);
-    }
-
-    public Room(int stageId, int roomId, String roomName){
-        this(roomId, roomName);
+    public Room(int stageId, String roomName, Vec2D size, Vec2D initialPlayerPos, BackgroundManager backgroundManager) {
         this.stageId = stageId;
+        this.roomName = roomName;
+        this.size = size;
+        this.initialPlayerPos = initialPlayerPos;
+        this.backgroundManager = backgroundManager;
     }
 
-    public Room(int stageId, int roomId, String roomName, Vec2D initialPlayerPos){
-        this(stageId, roomId, roomName);
-        this.initialPlayerPos = initialPlayerPos;
+    public void draw() {
+        for (Obstacle obstacle : obstacles) obstacle.show();
+    }
+
+    public Vec2D getSize() {
+        return size;
     }
 
     public void setStageId(int stageId) {
         this.stageId = stageId;
     }
 
-    public void setPosition(Vec2D position) {
-        this.position = position;
-    }
-
     public void setSize(Vec2D size) {
         this.size = size;
     }
 
-    int obstacleCount = 0;
-    int interactableCount = 0;
-
     public void addObstacle(Obstacle obstacle) {
         obstacles.add(obstacle);
-        obstacleCount++;
     }
 
-    public void show() {
-        for(int i=0; i<obstacleCount; i++) obstacles.get(i).show();
+    public BackgroundManager getBackgroundManager() {
+        return backgroundManager;
     }
 }

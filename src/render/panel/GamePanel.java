@@ -1,12 +1,14 @@
-package render;
+package render.panel;
 
-import main.ImportProject;
 import main.MainKeyListener;
+import main.GameManager;
+import render.layout.linear.LinearConstraints;
+import render.layout.linear.LinearLayout;
+import render.layout.linear.LinearSpace;
+import render.layout.linear.Orientation;
 
 import javax.swing.*;
 import java.awt.*;
-
-import static render.RenderUtil.tileSize;
 
 // Panel for stage screen - play screen.
 public class GamePanel extends JPanel implements Runnable{
@@ -19,20 +21,19 @@ public class GamePanel extends JPanel implements Runnable{
 
     public GamePanel(GameManager gameManager){
         this.gameManager = gameManager;
-        setDoubleBuffered(true);
-        stagePanel = new StagePanel();
-        toolPanel = new ToolPanel();
+        keyListener = new MainKeyListener(gameManager);
+        stagePanel = new StagePanel(gameManager);
+        toolPanel = new ToolPanel(gameManager);
+
         stagePanel.setVisible(true);
         toolPanel.setVisible(true);
-        setLayout(new GridLayout(0,1));
-        add(stagePanel);
-        add(toolPanel);
+        setLayout(new LinearLayout(Orientation.VERTICAL, 0));
+        add(stagePanel, new LinearConstraints().setWeight(9).setLinearSpace(LinearSpace.MATCH_PARENT));
+        add(toolPanel, new LinearConstraints().setWeight(1).setLinearSpace(LinearSpace.MATCH_PARENT));
+        setDoubleBuffered(true);
         setFocusable(true);
         requestFocus();
-        keyListener = new MainKeyListener(gameManager);
         addKeyListener(keyListener);
-        setBackground(Color.CYAN);
-        setBorder(Borders.LOWEREDBEVEL);
         setVisible(true);
     }
 
@@ -49,20 +50,6 @@ public class GamePanel extends JPanel implements Runnable{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.setColor(Color.GREEN);
-        gameManager.getPlayer().draw(g2);
-
-        g2.setColor(Color.RED);
-
-        for(int i = 1; i <= getWidth() / tileSize; i++) {
-            g2.drawLine(i * tileSize, 0, i * tileSize, getHeight());
-        }
-
-        for(int i = 1; i <= getHeight() / tileSize; i++) {
-            g2.drawLine(0, i * tileSize, getWidth(), i * tileSize);
-        }
-
-        g2.dispose();
     }
 
     @Override

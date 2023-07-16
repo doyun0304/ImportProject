@@ -1,7 +1,6 @@
 package main;
 
-import render.GameManager;
-import world.entity.character.Direction;
+import world.entity.Direction;
 import world.entity.character.Player;
 
 import java.awt.event.KeyEvent;
@@ -19,11 +18,11 @@ public class MainKeyListener implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-//        System.out.println("The key Typed was: " + e.getKeyChar());
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
+        //TODO: key delay
         player = gameManager.getPlayer();
         char c = e.getKeyChar();
 
@@ -84,7 +83,6 @@ public class MainKeyListener implements KeyListener {
     private void moveClear(char ch) {
         if(ch=='w') {
             while(upCnt != 0) {
-                //TODO: key delay
 
                 player.setDirection(Direction.UP);
                 player.move();
@@ -95,8 +93,6 @@ public class MainKeyListener implements KeyListener {
 
         if(ch=='a') {
             while(leftCnt != 0) {
-                //TODO: key delay
-
                 player.setDirection(Direction.LEFT);
                 player.move();
                 player.updateMoveCondition(false);
@@ -106,8 +102,6 @@ public class MainKeyListener implements KeyListener {
 
         if(ch=='s') {
             while(downCnt != 0) {
-                //TODO: key delay
-
                 player.setDirection(Direction.DOWN);
                 player.move();
                 player.updateMoveCondition(false);
@@ -117,8 +111,6 @@ public class MainKeyListener implements KeyListener {
 
         if(ch=='d') {
             while(rightCnt != 0) {
-                //TODO: key delay
-
                 player.setDirection(Direction.RIGHT);
                 player.move();
                 player.updateMoveCondition(false);

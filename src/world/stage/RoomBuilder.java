@@ -8,6 +8,7 @@ public class RoomBuilder {
     private int stageId;
     private String roomName;
     private ArrayList<Obstacle> obstacles;
+    private ArrayList<Puzzle> puzzles;
     private Vec2D size;
     private Vec2D initialPlayerPos;
     private BackgroundManager backgroundManager;
@@ -18,6 +19,7 @@ public class RoomBuilder {
         this.size = size;
         this.initialPlayerPos = initialPlayerPos;
         obstacles = new ArrayList<>();
+        puzzles = new ArrayList<>();
         backgroundManager = new BackgroundManager(size);
     }
 
@@ -28,6 +30,10 @@ public class RoomBuilder {
         this.initialPlayerPos = initialPlayerPos;
         obstacles = new ArrayList<>();
         backgroundManager = new BackgroundManager(size);
+    }
+
+    public void addPuzzle(Puzzle puzzle) {
+        puzzles.add(puzzle);
     }
 
     public BackgroundManager getBackgroundManager() {

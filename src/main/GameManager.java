@@ -15,6 +15,8 @@ public class GameManager {
     private Player player;
     private GamePanel gamePanel;
 
+    private boolean isPuzzle = false;
+
     public GameManager(){
         stages = new ArrayList<>();
         StageBuilder sb = new StageBuilder(0, "");
@@ -40,6 +42,13 @@ public class GameManager {
     public void initiate(JFrame frame) {
         frame.add(gamePanel);
         gamePanel.stageStart();
+    }
+
+    public void switchMode() {
+        isPuzzle = !isPuzzle;
+
+        if(isPuzzle) gamePanel.setPuzzlePanel();
+        else gamePanel.setStagePanel();
     }
 
     public Player getPlayer() {

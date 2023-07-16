@@ -15,6 +15,8 @@ public class GamePanel extends JPanel implements Runnable{
     Thread gameThread;
     StagePanel stagePanel;
     ToolPanel toolPanel;
+    PuzzlePanel puzzlePanel;
+    AnswerPanel answerPanel;
     MainKeyListener keyListener;
     GameManager gameManager;
     int frameRate = 60;
@@ -24,17 +26,11 @@ public class GamePanel extends JPanel implements Runnable{
         keyListener = new MainKeyListener(gameManager);
         stagePanel = new StagePanel(gameManager);
         toolPanel = new ToolPanel(gameManager);
+        puzzlePanel = new PuzzlePanel(gameManager);
+        answerPanel = new AnswerPanel(gameManager);
 
-        stagePanel.setVisible(true);
-        toolPanel.setVisible(true);
-        setLayout(new LinearLayout(Orientation.VERTICAL, 0));
-        add(stagePanel, new LinearConstraints().setWeight(9).setLinearSpace(LinearSpace.MATCH_PARENT));
-        add(toolPanel, new LinearConstraints().setWeight(1).setLinearSpace(LinearSpace.MATCH_PARENT));
-        setDoubleBuffered(true);
-        setFocusable(true);
-        requestFocus();
         addKeyListener(keyListener);
-        setVisible(true);
+        setStagePanel();
     }
 
     public void stageStart(){
@@ -50,6 +46,34 @@ public class GamePanel extends JPanel implements Runnable{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+    }
+
+    public void setPuzzlePanel() {
+        setLayout(new LinearLayout(Orientation.VERTICAL, 0));
+        stagePanel.setVisible(false);
+        toolPanel.setVisible(false);
+        puzzlePanel.setVisible(true);
+        answerPanel.setVisible(true);
+        add(puzzlePanel, new LinearConstraints().setWeight(9).setLinearSpace(LinearSpace.MATCH_PARENT));
+        add(answerPanel, new LinearConstraints().setWeight(1).setLinearSpace(LinearSpace.MATCH_PARENT));
+        setDoubleBuffered(true);
+        setFocusable(true);
+        requestFocus();
+        setVisible(true);
+    }
+
+    public void setStagePanel() {
+        stagePanel.setVisible(true);
+        toolPanel.setVisible(true);
+        puzzlePanel.setVisible(false);
+        answerPanel.setVisible(false);
+        setLayout(new LinearLayout(Orientation.VERTICAL, 0));
+        add(stagePanel, new LinearConstraints().setWeight(9).setLinearSpace(LinearSpace.MATCH_PARENT));
+        add(toolPanel, new LinearConstraints().setWeight(1).setLinearSpace(LinearSpace.MATCH_PARENT));
+        setDoubleBuffered(true);
+        setFocusable(true);
+        requestFocus();
+        setVisible(true);
     }
 
     @Override

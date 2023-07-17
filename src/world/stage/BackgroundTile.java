@@ -17,14 +17,9 @@ public class BackgroundTile {
 
     public BackgroundTile(TileType type){
         this.type = type;
-        switch (type) {
-            case WALL -> {
-                img = Images.playerImage[3][3];
-                collision = true;
-            }
-            case GSHS -> {
-                img = Images.gshsImage;
-            }
+        img = Images.tileImage[type.toIndex()];
+        if (type == WALL) {
+            collision = true;
         }
     }
 

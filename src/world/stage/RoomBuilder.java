@@ -9,27 +9,16 @@ public class RoomBuilder {
     private String roomName;
     private ArrayList<Obstacle> obstacles;
     private ArrayList<Puzzle> puzzles;
-    private Vec2D size;
     private Vec2D initialPlayerPos;
     private BackgroundManager backgroundManager;
-
-    public RoomBuilder(int stageId, String roomName, Vec2D size, Vec2D initialPlayerPos){
-        this.stageId = stageId;
-        this.roomName = roomName;
-        this.size = size;
-        this.initialPlayerPos = initialPlayerPos;
-        obstacles = new ArrayList<>();
-        puzzles = new ArrayList<>();
-        backgroundManager = new BackgroundManager(size);
-    }
 
     public RoomBuilder(int stageId, String roomName, Vec2D initialPlayerPos){
         this.stageId = stageId;
         this.roomName = roomName;
-        size = new Vec2D(22, 10);
         this.initialPlayerPos = initialPlayerPos;
         obstacles = new ArrayList<>();
-        backgroundManager = new BackgroundManager(size);
+        puzzles = new ArrayList<>();
+        backgroundManager = new BackgroundManager();
     }
 
     public void addPuzzle(Puzzle puzzle) {
@@ -41,7 +30,7 @@ public class RoomBuilder {
     }
 
     public Room build(){
-        Room output = new Room(stageId, roomName, size, initialPlayerPos, backgroundManager);
+        Room output = new Room(stageId, roomName, initialPlayerPos, backgroundManager);
         backgroundManager.setRoom(output);
         return output;
     }

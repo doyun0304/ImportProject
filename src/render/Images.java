@@ -1,5 +1,8 @@
 package render;
 
+import world.entity.Direction;
+import world.stage.TileType;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -12,16 +15,19 @@ public class Images {
     public static final String assetPath = "src/assets/";
     public static BufferedImage gshsImage;
     public static BufferedImage[][] playerImage = new BufferedImage[4][4];
+    public static BufferedImage[] tileImage = new BufferedImage[11];
 
     static{
         try {
             gshsImage = getResizedImage("gshslogo.png");
-            String[] direction = {"UP", "RIGHT", "DOWN", "LEFT"};
             for(int i=0; i<4; i++) {
-                playerImage[i][0] = getResizedImage("player_"+direction[i]+"_0.png");
-                playerImage[i][1] = getResizedImage("player_"+direction[i]+"_1.png");
-                playerImage[i][2] = getResizedImage("player_"+direction[i]+"_0.png");
-                playerImage[i][3] = getResizedImage("player_"+direction[i]+"_2.png");
+                playerImage[i][0] = getResizedImage("player_"+Direction.get(i)+"_0.png");
+                playerImage[i][1] = getResizedImage("player_"+Direction.get(i)+"_1.png");
+                playerImage[i][2] = getResizedImage("player_"+Direction.get(i)+"_0.png");
+                playerImage[i][3] = getResizedImage("player_"+Direction.get(i)+"_2.png");
+            }
+            for(int i=0; i<TileType.values().length; i++) {
+                tileImage[i] = getResizedImage("tile_"+TileType.get(i)+".png");
             }
         } catch (IOException e) {
             e.printStackTrace();

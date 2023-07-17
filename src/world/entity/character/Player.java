@@ -5,6 +5,7 @@ import render.Images;
 import util.DVec2D;
 import util.Vec2D;
 import world.entity.Direction;
+import world.stage.Room;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -72,7 +73,8 @@ public class Player {
             case DOWN -> currentPos.add(new Vec2D(0,1));
             case LEFT -> currentPos.add(new Vec2D(-1,0));
         }
-        return !gamePanel.getStagePanel().getBackgroundManager().getTile(currentPos.x, currentPos.y).canBeCollided();
+        return (currentPos.x>=0 && currentPos.x<Room.size.x && currentPos.y>=0 && currentPos.y<Room.size.y)
+                && !gamePanel.getStagePanel().getBackgroundManager().getTile(currentPos.x, currentPos.y).canBeCollided();
     }
 
     public Vec2D getPosition() {

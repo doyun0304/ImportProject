@@ -8,8 +8,8 @@ public class BackgroundManager {
     private Room room;
     private BackgroundTile[][] tiles;
 
-    public BackgroundManager(Vec2D size){
-        tiles = new BackgroundTile[size.y][size.x];
+    public BackgroundManager(){
+        tiles = new BackgroundTile[Room.size.y][Room.size.x];
     }
 
     public void draw(Graphics2D g2){
@@ -24,7 +24,11 @@ public class BackgroundManager {
     public void setTiles(int[][] pTiles){
         for(int i=0; i<tiles.length; i++){
             for(int j=0; j<tiles[i].length; j++){
-                tiles[i][j] = BackgroundTile.fromInt(pTiles[i][j]);
+                try {
+                    tiles[i][j] = BackgroundTile.fromInt(pTiles[i][j]);
+                } catch (ArrayIndexOutOfBoundsException e){
+                    tiles[i][j] = BackgroundTile.fromInt(0);
+                }
             }
         }
     }

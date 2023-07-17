@@ -1,7 +1,5 @@
 package world.stage;
 
-import util.Vec2D;
-
 import java.awt.*;
 
 public class BackgroundManager {

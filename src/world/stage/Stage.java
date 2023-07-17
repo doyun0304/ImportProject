@@ -5,12 +5,7 @@ import java.util.ArrayList;
 public class Stage {
     ArrayList<Room> rooms;
     int stageId;
-    String stageName = "";
-
-    public Stage(int stageId, String stageName){
-        this(stageId, stageName, new ArrayList<>());
-        rooms = new ArrayList<>();
-    }
+    String stageName;
 
     public Stage(int stageId, String stageName, ArrayList<Room> rooms) {
         this.stageId = stageId;

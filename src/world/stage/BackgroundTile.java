@@ -1,8 +1,6 @@
 package world.stage;
 
 import render.Images;
-import render.panel.StagePanel;
-import util.Vec2D;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

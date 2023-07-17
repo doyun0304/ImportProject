@@ -3,7 +3,6 @@ package util;
 import world.stage.Room;
 
 import java.io.*;
-import java.util.Arrays;
 
 public class Util {
     public static int[][] readRoomData(int stageId, int roomId){
@@ -15,7 +14,7 @@ public class Util {
             BufferedReader br = new BufferedReader(new InputStreamReader(fis));
             String line;
             while((line = br.readLine()) != null) {
-                String tiles[] = line.split(" ");
+                String[] tiles = line.split(" ");
                 for(int i=0; i<Room.size.x; i++) {
                     output[x][i] = Integer.parseInt(tiles[i]);
                 }

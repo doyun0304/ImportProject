@@ -25,7 +25,7 @@ public class MainKeyListener implements KeyListener {
         player = gameManager.getPlayer();
         int c = e.getKeyCode();
 
-        if(c=='p') {
+        if(c==KeyEvent.VK_P) {
             gameManager.switchMode();
         }
 

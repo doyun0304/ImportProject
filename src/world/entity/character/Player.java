@@ -17,7 +17,7 @@ public class Player {
     private Vec2D iPosition;
     Direction direction;
 
-    private double velocity = 0.25;
+    private final double velocity = 0.25;
     private int moveCondition;
     GamePanel gamePanel;
     BufferedImage[][] img;

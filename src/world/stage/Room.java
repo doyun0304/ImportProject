@@ -25,10 +25,6 @@ public class Room {
         for (Obstacle obstacle : obstacles) obstacle.show();
     }
 
-    public Vec2D getSize() {
-        return size;
-    }
-
     public void setStageId(int stageId) {
         this.stageId = stageId;
     }

@@ -15,17 +15,18 @@ import static render.RenderUtil.tileSize;
 public class Player {
     private DVec2D dPosition;
     private Vec2D iPosition;
-    Direction direction;
-
+    private Direction direction;
     private final double velocity = 0.25;
     private int moveCondition;
-    GamePanel gamePanel;
-    BufferedImage[][] img;
+    private GamePanel gamePanel;
+    private BufferedImage[][] img;
+    private Inventory inventory;
 
     public Player(){
         dPosition = new DVec2D();
         direction = Direction.UP;
         img = Images.playerImage;
+        inventory = new Inventory();
     }
 
     public Player(GamePanel gamePanel){

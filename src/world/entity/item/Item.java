@@ -2,14 +2,20 @@ package world.entity.item;
 
 import java.awt.image.BufferedImage;
 
-public class Item {
+/*
+ * Item on Toolbar
+ */
+
+public abstract class Item {
     int stageId;
     String name;
-    BufferedImage imgOnMap;
-    BufferedImage imgOnToolbar;
+    BufferedImage img;
 
     public Item(String name) {
         this.name = name;
     }
 
+    public void draw(){
+
+    }
 }

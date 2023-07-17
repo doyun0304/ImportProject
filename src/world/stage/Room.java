@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class Room {
     private ArrayList<Obstacle> obstacles = new ArrayList<>();
+    private ArrayList<Puzzle> puzzles = new ArrayList<>();
     private Color backgroundColor;
     private int stageId;
     private String roomName;
@@ -15,11 +16,17 @@ public class Room {
     private BackgroundManager backgroundManager;
 
     public Room(int stageId, String roomName, Vec2D size, Vec2D initialPlayerPos, BackgroundManager backgroundManager) {
+        this(stageId, roomName, size, initialPlayerPos, backgroundManager, new ArrayList<>());
+        puzzles = new ArrayList<>();
+    }
+
+    public Room(int stageId, String roomName, Vec2D size, Vec2D initialPlayerPos, BackgroundManager backgroundManager, ArrayList<Puzzle> puzzles) {
         this.stageId = stageId;
         this.roomName = roomName;
         this.size = size;
         this.initialPlayerPos = initialPlayerPos;
         this.backgroundManager = backgroundManager;
+        this.puzzles = puzzles;
     }
 
     public void draw() {
@@ -36,6 +43,10 @@ public class Room {
 
     public void setSize(Vec2D size) {
         this.size = size;
+    }
+
+    public ArrayList<Puzzle> getPuzzles() {
+        return puzzles;
     }
 
     public void addObstacle(Obstacle obstacle) {

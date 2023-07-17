@@ -29,6 +29,7 @@ public class RoomBuilder {
         size = new Vec2D(22, 10);
         this.initialPlayerPos = initialPlayerPos;
         obstacles = new ArrayList<>();
+        puzzles = new ArrayList<>();
         backgroundManager = new BackgroundManager(size);
     }
 
@@ -41,7 +42,7 @@ public class RoomBuilder {
     }
 
     public Room build(){
-        Room output = new Room(stageId, roomName, size, initialPlayerPos, backgroundManager);
+        Room output = new Room(stageId, roomName, size, initialPlayerPos, backgroundManager, puzzles);
         backgroundManager.setRoom(output);
         return output;
     }

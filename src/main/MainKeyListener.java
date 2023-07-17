@@ -1,5 +1,6 @@
 package main;
 
+import render.panel.PuzzlePanel;
 import world.entity.Direction;
 import world.entity.character.Player;
 
@@ -26,8 +27,10 @@ public class MainKeyListener implements KeyListener {
         int c = e.getKeyCode();
 
         if(c==KeyEvent.VK_P) {
-            gameManager.switchMode();
+            gameManager.getGamePanel().getPuzzlePanel().checkPuzzle(player.getPosition());
         }
+          
+        if(gameManager.getGamePanel().isPuzzle()) return;
 
         if(c==KeyEvent.VK_W) {
             moveClear('a');

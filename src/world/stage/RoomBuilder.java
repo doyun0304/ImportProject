@@ -18,6 +18,7 @@ public class RoomBuilder {
         this.initialPlayerPos = initialPlayerPos;
         obstacles = new ArrayList<>();
         puzzles = new ArrayList<>();
+      
         backgroundManager = new BackgroundManager();
     }
 
@@ -30,7 +31,7 @@ public class RoomBuilder {
     }
 
     public Room build(){
-        Room output = new Room(stageId, roomName, initialPlayerPos, backgroundManager);
+        Room output = new Room(stageId, roomName, initialPlayerPos, backgroundManager, puzzles);
         backgroundManager.setRoom(output);
         return output;
     }

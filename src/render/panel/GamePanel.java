@@ -21,6 +21,8 @@ public class GamePanel extends JPanel implements Runnable{
     private GameManager gameManager;
     private final int frameRate = 60;
 
+    private boolean isPuzzle = false;
+
     public GamePanel(GameManager gameManager){
         this.gameManager = gameManager;
         keyListener = new MainKeyListener(gameManager);
@@ -46,6 +48,17 @@ public class GamePanel extends JPanel implements Runnable{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+    }
+
+    public void switchMode() {
+        isPuzzle = !isPuzzle;
+
+        if(isPuzzle) setPuzzlePanel();
+        else setStagePanel();
+    }
+
+    public boolean isPuzzle() {
+        return isPuzzle;
     }
 
     public void setPuzzlePanel() {
@@ -74,6 +87,10 @@ public class GamePanel extends JPanel implements Runnable{
         setFocusable(true);
         requestFocus();
         setVisible(true);
+    }
+
+    public PuzzlePanel getPuzzlePanel() {
+        return puzzlePanel;
     }
 
     @Override

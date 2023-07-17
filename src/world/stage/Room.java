@@ -11,7 +11,7 @@ public class Room {
     private Color backgroundColor;
     private int stageId;
     private String roomName;
-    private Vec2D size;
+    public static final Vec2D size = new Vec2D(25, 15);
     private Vec2D initialPlayerPos;
     private BackgroundManager backgroundManager;
 
@@ -23,7 +23,6 @@ public class Room {
     public Room(int stageId, String roomName, Vec2D size, Vec2D initialPlayerPos, BackgroundManager backgroundManager, ArrayList<Puzzle> puzzles) {
         this.stageId = stageId;
         this.roomName = roomName;
-        this.size = size;
         this.initialPlayerPos = initialPlayerPos;
         this.backgroundManager = backgroundManager;
         this.puzzles = puzzles;
@@ -33,18 +32,10 @@ public class Room {
         for (Obstacle obstacle : obstacles) obstacle.show();
     }
 
-    public Vec2D getSize() {
-        return size;
-    }
-
     public void setStageId(int stageId) {
         this.stageId = stageId;
     }
-
-    public void setSize(Vec2D size) {
-        this.size = size;
-    }
-
+      
     public ArrayList<Puzzle> getPuzzles() {
         return puzzles;
     }
@@ -55,5 +46,9 @@ public class Room {
 
     public BackgroundManager getBackgroundManager() {
         return backgroundManager;
+    }
+
+    public Vec2D getInitialPlayerPos() {
+        return initialPlayerPos;
     }
 }

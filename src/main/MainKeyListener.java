@@ -23,17 +23,16 @@ public class MainKeyListener implements KeyListener {
 
     @Override
     public synchronized void keyPressed(KeyEvent e) {
-        //TODO: key delay
         player = gameManager.getPlayer();
-        char c = e.getKeyChar();
+        int c = e.getKeyCode();
 
-        if(c=='p') {
+        if(c==KeyEvent.VK_P) {
             gameManager.getGamePanel().getPuzzlePanel().checkPuzzle(player.getPosition());
         }
-
+          
         if(gameManager.getGamePanel().isPuzzle()) return;
 
-        if(c=='w') {
+        if(c==KeyEvent.VK_W) {
             moveClear('a');
             moveClear('s');
             moveClear('d');
@@ -43,7 +42,7 @@ public class MainKeyListener implements KeyListener {
             player.updateMoveCondition(false);
             upCnt++; upCnt %= 4;
         }
-        if(c=='a') {
+        if(c==KeyEvent.VK_A) {
             moveClear('w');
             moveClear('s');
             moveClear('d');
@@ -53,7 +52,7 @@ public class MainKeyListener implements KeyListener {
             player.updateMoveCondition(false);
             leftCnt++; leftCnt %= 4;
         }
-        if(c=='s') {
+        if(c==KeyEvent.VK_S) {
             moveClear('w');
             moveClear('a');
             moveClear('d');
@@ -63,7 +62,7 @@ public class MainKeyListener implements KeyListener {
             player.updateMoveCondition(false);
             downCnt++; downCnt %= 4;
         }
-        if(c=='d') {
+        if(c==KeyEvent.VK_D) {
             moveClear('w');
             moveClear('a');
             moveClear('s');
@@ -77,9 +76,8 @@ public class MainKeyListener implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        char c = e.getKeyChar();
-
-        if(c=='w'||c=='a'||c=='s'||c=='d') {
+        int c = e.getKeyCode();
+        if(c==KeyEvent.VK_W||c==KeyEvent.VK_A||c==KeyEvent.VK_S||c==KeyEvent.VK_D) {
             moveClear('w');
             moveClear('a');
             moveClear('s');
@@ -91,7 +89,6 @@ public class MainKeyListener implements KeyListener {
     private void moveClear(char ch) {
         if(ch=='w') {
             while(upCnt != 0) {
-
                 player.setDirection(Direction.UP);
                 player.move();
                 player.updateMoveCondition(false);

@@ -1,5 +1,8 @@
 package render;
 
+import world.entity.Direction;
+import world.stage.TileType;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -13,6 +16,7 @@ public class Images {
     public static BufferedImage gshsImage;
     public static BufferedImage[][] playerImage = new BufferedImage[4][4];
     public static BufferedImage[] puzzleImage = new BufferedImage[50];
+    public static BufferedImage[] tileImage = new BufferedImage[11];
 
     static{
         try {
@@ -23,6 +27,10 @@ public class Images {
                 playerImage[i][1] = getResizedImage("player_"+direction[i]+"_1.png", tileSize, tileSize);
                 playerImage[i][2] = getResizedImage("player_"+direction[i]+"_0.png", tileSize, tileSize);
                 playerImage[i][3] = getResizedImage("player_"+direction[i]+"_2.png", tileSize, tileSize);
+            }
+          
+            for(int i=0; i<TileType.values().length; i++) {
+                tileImage[i] = getResizedImage("tile_"+TileType.get(i)+".png", tileSize, tileSize);
             }
 
             for(int i = 0; i < 1; i++) {

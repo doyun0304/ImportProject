@@ -37,6 +37,10 @@ public class DVec2D {
         }
     }
 
+    public DVec2D copy(){
+        return new DVec2D(x,y);
+    }
+
     public double dist(DVec2D v){
         return Math.sqrt((x-v.x)*(x-v.x)+(y-v.y)*(y-v.y));
     }

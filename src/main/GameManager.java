@@ -11,6 +11,8 @@ import world.stage.StageBuilder;
 import javax.swing.*;
 import java.util.ArrayList;
 
+import static util.Util.readRoomData;
+
 public class GameManager {
     private ArrayList<Stage> stages;
     private Player player;
@@ -19,20 +21,8 @@ public class GameManager {
     public GameManager(){
         stages = new ArrayList<>();
         StageBuilder sb = new StageBuilder(0, "");
-        RoomBuilder rb = new RoomBuilder(0, "", new Vec2D(3, 5));
-        rb.getBackgroundManager().setTiles(new int[][]{
-                {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                {0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0},
-                {0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0},
-                {0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0},
-                {0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0},
-                {0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0},
-                {0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0},
-                {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-        });
-
+        RoomBuilder rb = new RoomBuilder(0, "", new Vec2D(13, 8));
+        rb.getBackgroundManager().setTiles(readRoomData(0,0));
         rb.addPuzzle(new KeyTypePuzzle("", "test", 0, new Vec2D(2,2)));
 
         sb.addRoom(rb.build());

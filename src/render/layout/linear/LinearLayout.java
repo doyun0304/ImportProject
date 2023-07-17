@@ -1,6 +1,6 @@
 package render.layout.linear;
 
-// LinearLayout Implementation of Github Mommoo
+// LinearLayout Implementation of GitHub Mommoo
 
 import java.awt.*;
 import java.io.Serializable;

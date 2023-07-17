@@ -37,6 +37,10 @@ public class Vec2D {
         }
     }
 
+    public Vec2D copy(){
+        return new Vec2D(x, y);
+    }
+
     public double dist(Vec2D v){
         return Math.sqrt((x-v.x)*(x-v.x)+(y-v.y)*(y-v.y));
     }

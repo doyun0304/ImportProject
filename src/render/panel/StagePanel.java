@@ -52,4 +52,12 @@ public class StagePanel extends JPanel {
 
         g2.dispose();
     }
+
+    public BackgroundManager getBackgroundManager() {
+        return backgroundManager;
+    }
+
+    public Room getCurrentRoom() {
+        return currentRoom;
+    }
 }

@@ -31,10 +31,6 @@ class LinearAreaCalculator {
                 .filter(comp -> finder.find(comp).getWeight() > 0)
                 .collect(Collectors.toList());
 
-        /*
-         *  Swing component put component using by pixel( int value ) so, error value may be exist
-         *  We solve this problem by adding error value to last component had weight
-         */
         Dimension errorDimension = getErrorDimension(weightList, finder, weightEnableArea, weightW, weightH);
         Component lastWeightComp = weightList.size() > 0 ? weightList.get(weightList.size() - 1) : null;
 

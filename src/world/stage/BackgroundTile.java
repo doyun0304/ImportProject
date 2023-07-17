@@ -8,24 +8,35 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import static render.RenderUtil.tileSize;
+import static world.stage.TileType.*;
 
 public class BackgroundTile {
     private BufferedImage img;
-    private String type;
+    private TileType type;
+    private boolean collision;
 
-    public BackgroundTile(String type){
+    public BackgroundTile(TileType type){
         this.type = type;
-        img = Images.gshsImage;
+        switch(type){
+            case WALL:
+                img = Images.playerImage[3][3];
+                collision = true;
+                break;
+            case GSHS:
+                img = Images.gshsImage;
+                break;
+        }
     }
 
-    public void setType(String type){
-        this.type = type;
-    }
     public void draw(Graphics2D g2, int x, int y){
         g2.drawImage(img, x*tileSize, y*tileSize, tileSize, tileSize, null);
     }
 
     public static BackgroundTile fromInt(int i){
-        return new BackgroundTile("");
+        return new BackgroundTile(TileType.get(i));
+    }
+
+    public boolean canBeCollided(){
+        return collision;
     }
 }

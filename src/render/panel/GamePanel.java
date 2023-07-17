@@ -1,5 +1,6 @@
 package render.panel;
 
+import main.ImportProject;
 import main.MainKeyListener;
 import main.GameManager;
 import render.layout.linear.LinearConstraints;
@@ -67,8 +68,9 @@ public class GamePanel extends JPanel implements Runnable{
         toolPanel.setVisible(false);
         puzzlePanel.setVisible(true);
         answerPanel.setVisible(true);
-        add(puzzlePanel, new LinearConstraints().setWeight(9).setLinearSpace(LinearSpace.MATCH_PARENT));
-        add(answerPanel, new LinearConstraints().setWeight(1).setLinearSpace(LinearSpace.MATCH_PARENT));
+        setPreferredSize(new Dimension(ImportProject.screenWidth, ImportProject.screenHeight));
+        add(puzzlePanel, new LinearConstraints().setWeight(15).setLinearSpace(LinearSpace.MATCH_PARENT));
+        add(answerPanel, new LinearConstraints().setWeight(2).setLinearSpace(LinearSpace.MATCH_PARENT));
         remove(stagePanel);
         remove(toolPanel);
         setDoubleBuffered(true);
@@ -83,8 +85,9 @@ public class GamePanel extends JPanel implements Runnable{
         puzzlePanel.setVisible(false);
         answerPanel.setVisible(false);
         setLayout(new LinearLayout(Orientation.VERTICAL, 0));
-        add(stagePanel, new LinearConstraints().setWeight(9).setLinearSpace(LinearSpace.MATCH_PARENT));
-        add(toolPanel, new LinearConstraints().setWeight(1).setLinearSpace(LinearSpace.MATCH_PARENT));
+        setPreferredSize(new Dimension(ImportProject.screenWidth, ImportProject.screenHeight));
+        add(stagePanel, new LinearConstraints().setWeight(15).setLinearSpace(LinearSpace.MATCH_PARENT));
+        add(toolPanel, new LinearConstraints().setWeight(2).setLinearSpace(LinearSpace.MATCH_PARENT));
         remove(puzzlePanel);
         remove(answerPanel);
         setDoubleBuffered(true);

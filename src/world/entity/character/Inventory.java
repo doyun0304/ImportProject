@@ -1,6 +1,8 @@
 package world.entity.character;
 
 import world.entity.item.Item;
+
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Inventory {
@@ -10,10 +12,6 @@ public class Inventory {
     public Inventory() {
         itemList = new ArrayList<>();
         isDisplayed = false;
-    }
-
-    void display() {
-
     }
 
     void addItem(Item item) {
@@ -27,7 +25,7 @@ public class Inventory {
         return item;
     }
 
-    void openInventory() {
+    public void draw(Graphics2D g2){
 
     }
 }

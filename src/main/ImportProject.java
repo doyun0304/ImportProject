@@ -1,5 +1,9 @@
 package main;
 
+import util.Vec2D;
+import world.entity.item.FieldItem;
+import world.entity.item.Key;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -12,6 +16,7 @@ public class ImportProject {
     public static void main(String[] args) {
         gameManager = new GameManager();
         showScreen(screenWidth, screenHeight);
+        FieldItem item = new FieldItem("Key", new Vec2D(0,0), new Key("Key01", "Lock01"));
     }
 
     public static void showScreen(int screenWidth, int screenHeight) {

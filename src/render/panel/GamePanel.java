@@ -12,14 +12,14 @@ import java.awt.*;
 
 // Panel for stage screen - play screen.
 public class GamePanel extends JPanel implements Runnable{
-    Thread gameThread;
-    StagePanel stagePanel;
-    ToolPanel toolPanel;
-    PuzzlePanel puzzlePanel;
-    AnswerPanel answerPanel;
-    MainKeyListener keyListener;
-    GameManager gameManager;
-    int frameRate = 60;
+    private Thread gameThread;
+    private StagePanel stagePanel;
+    private ToolPanel toolPanel;
+    private PuzzlePanel puzzlePanel;
+    private AnswerPanel answerPanel;
+    private MainKeyListener keyListener;
+    private GameManager gameManager;
+    private final int frameRate = 60;
 
     public GamePanel(GameManager gameManager){
         this.gameManager = gameManager;
@@ -93,5 +93,13 @@ public class GamePanel extends JPanel implements Runnable{
                 e.printStackTrace();
             }
         }
+    }
+
+    public StagePanel getStagePanel() {
+        return stagePanel;
+    }
+
+    public ToolPanel getToolPanel() {
+        return toolPanel;
     }
 }

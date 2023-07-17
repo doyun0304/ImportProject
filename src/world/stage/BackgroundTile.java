@@ -17,14 +17,14 @@ public class BackgroundTile {
 
     public BackgroundTile(TileType type){
         this.type = type;
-        switch(type){
-            case WALL:
+        switch (type) {
+            case WALL -> {
                 img = Images.playerImage[3][3];
                 collision = true;
-                break;
-            case GSHS:
+            }
+            case GSHS -> {
                 img = Images.gshsImage;
-                break;
+            }
         }
     }
 

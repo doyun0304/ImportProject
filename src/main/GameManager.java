@@ -20,7 +20,7 @@ public class GameManager {
     public GameManager(){
         stages = new ArrayList<>();
         StageBuilder sb = new StageBuilder(0, "");
-        RoomBuilder rb = new RoomBuilder(0, "", new Vec2D(3, 5));
+        RoomBuilder rb = new RoomBuilder(0, "", new Vec2D(13, 8));
         rb.getBackgroundManager().setTiles(new int[][]{
                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},

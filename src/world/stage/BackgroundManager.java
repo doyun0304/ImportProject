@@ -1,6 +1,5 @@
 package world.stage;
 
-import render.panel.StagePanel;
 import util.Vec2D;
 
 import java.awt.*;
@@ -28,6 +27,10 @@ public class BackgroundManager {
                 tiles[i][j] = BackgroundTile.fromInt(pTiles[i][j]);
             }
         }
+    }
+
+    public BackgroundTile getTile(int x, int y){
+        return tiles[y][x];
     }
 
     public void setRoom(Room room) {

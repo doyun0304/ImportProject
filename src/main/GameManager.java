@@ -23,7 +23,7 @@ public class GameManager {
         StageBuilder sb = new StageBuilder(0, "");
         RoomBuilder rb = new RoomBuilder(0, "", new Vec2D(13, 8));
         rb.getBackgroundManager().setTiles(readRoomData(0,0));
-        rb.addPuzzle(new KeyTypePuzzle("", "test", 0, new Vec2D(2,2)));
+        rb.addPuzzle(new KeyTypePuzzle("", "test", 0, new Vec2D(3,5)));
 
         sb.addRoom(rb.build());
         stages.add(sb.build());

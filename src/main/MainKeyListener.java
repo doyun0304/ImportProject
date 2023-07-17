@@ -27,6 +27,11 @@ public class MainKeyListener implements KeyListener {
         int c = e.getKeyCode();
 
         if(c==KeyEvent.VK_P) {
+            moveClear('w');
+            moveClear('a');
+            moveClear('s');
+            moveClear('d');
+
             gameManager.getGamePanel().getPuzzlePanel().checkPuzzle(player.getPosition());
         }
           

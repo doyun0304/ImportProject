@@ -69,6 +69,8 @@ public class GamePanel extends JPanel implements Runnable{
         answerPanel.setVisible(true);
         add(puzzlePanel, new LinearConstraints().setWeight(9).setLinearSpace(LinearSpace.MATCH_PARENT));
         add(answerPanel, new LinearConstraints().setWeight(1).setLinearSpace(LinearSpace.MATCH_PARENT));
+        remove(stagePanel);
+        remove(toolPanel);
         setDoubleBuffered(true);
         setFocusable(true);
         requestFocus();
@@ -83,6 +85,8 @@ public class GamePanel extends JPanel implements Runnable{
         setLayout(new LinearLayout(Orientation.VERTICAL, 0));
         add(stagePanel, new LinearConstraints().setWeight(9).setLinearSpace(LinearSpace.MATCH_PARENT));
         add(toolPanel, new LinearConstraints().setWeight(1).setLinearSpace(LinearSpace.MATCH_PARENT));
+        remove(puzzlePanel);
+        remove(answerPanel);
         setDoubleBuffered(true);
         setFocusable(true);
         requestFocus();

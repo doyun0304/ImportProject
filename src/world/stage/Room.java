@@ -15,12 +15,12 @@ public class Room {
     private Vec2D initialPlayerPos;
     private BackgroundManager backgroundManager;
 
-    public Room(int stageId, String roomName, Vec2D size, Vec2D initialPlayerPos, BackgroundManager backgroundManager) {
-        this(stageId, roomName, size, initialPlayerPos, backgroundManager, new ArrayList<>());
+    public Room(int stageId, String roomName, Vec2D initialPlayerPos, BackgroundManager backgroundManager) {
+        this(stageId, roomName, initialPlayerPos, backgroundManager, new ArrayList<>());
         puzzles = new ArrayList<>();
     }
 
-    public Room(int stageId, String roomName, Vec2D size, Vec2D initialPlayerPos, BackgroundManager backgroundManager, ArrayList<Puzzle> puzzles) {
+    public Room(int stageId, String roomName, Vec2D initialPlayerPos, BackgroundManager backgroundManager, ArrayList<Puzzle> puzzles) {
         this.stageId = stageId;
         this.roomName = roomName;
         this.initialPlayerPos = initialPlayerPos;

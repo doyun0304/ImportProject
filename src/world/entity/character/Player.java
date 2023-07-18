@@ -1,7 +1,6 @@
 package world.entity.character;
 
 import main.GameManager;
-import render.panel.GamePanel;
 import render.Images;
 import util.DVec2D;
 import util.Vec2D;
@@ -14,7 +13,6 @@ import world.stage.Room;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import static main.ImportProject.gameManager;
 import static render.RenderUtil.tileSize;
 
 public class Player {
@@ -92,7 +90,7 @@ public class Player {
             case LEFT -> currentPos.add(new Vec2D(-1,0));
         }
         return (currentPos.x>=0 && currentPos.x<Room.size.x && currentPos.y>=0 && currentPos.y<Room.size.y)
-                && !gameManager.getGamePanel().getStagePanel().getBackgroundManager().getTile(currentPos.x, currentPos.y).canBeCollided()
+                && !gameManager.getCurrentRoom().getBackgroundManager().getTile(currentPos.x, currentPos.y).canBeCollided()
                 && (gameManager.getCurrentRoom().canBeCollided(currentPos) == null);
     }
 

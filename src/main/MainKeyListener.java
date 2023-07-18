@@ -1,6 +1,6 @@
 package main;
 
-import render.panel.PuzzlePanel;
+import util.Vec2D;
 import world.entity.Direction;
 import world.entity.character.Player;
 
@@ -35,6 +35,9 @@ public class MainKeyListener implements KeyListener {
         }
         if(c==KeyEvent.VK_C){
             player.getInventory().setSelectedIdx(player.getInventory().getSelectedIdx()+1);
+        }
+        if(c==KeyEvent.VK_P){
+            gameManager.setRoom(1-gameManager.getCurrentRoomId(), new Vec2D(1, 1));
         }
 
         if(c==KeyEvent.VK_F) {

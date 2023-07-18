@@ -15,19 +15,6 @@ public class Room {
     private Vec2D initialPlayerPos;
     private BackgroundManager backgroundManager;
 
-    public Room(int stageId, Vec2D initialPlayerPos, BackgroundManager backgroundManager) {
-        this(stageId, initialPlayerPos, backgroundManager, new ArrayList<>());
-        puzzles = new ArrayList<>();
-        obstacles = new ArrayList<>();
-        items = new ArrayList<>();
-    }
-
-    public Room(int stageId, Vec2D initialPlayerPos, BackgroundManager backgroundManager, ArrayList<Puzzle> puzzles) {
-        this(stageId, initialPlayerPos, backgroundManager, puzzles, new ArrayList<>());
-        obstacles = new ArrayList<>();
-        items = new ArrayList<>();
-    }
-
     public Room(int stageId, Vec2D initialPlayerPos, BackgroundManager backgroundManager, ArrayList<Puzzle> puzzles, ArrayList<Obstacle> obstacles) {
         this.stageId = stageId;
         this.initialPlayerPos = initialPlayerPos;

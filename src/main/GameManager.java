@@ -23,7 +23,7 @@ public class GameManager {
         currentStageId = 0;
         currentRoomId = 0;
         StageBuilder sb = new StageBuilder(currentStageId, "");
-        RoomBuilder rb = new RoomBuilder(currentStageId, "", new Vec2D(13, 8));
+        RoomBuilder rb = new RoomBuilder(currentStageId, "", new Vec2D(1, 1));
         rb.getBackgroundManager().setTiles(readRoomData(currentStageId, currentRoomId));
         rb.addObstacle(new PuzzleObstacle(new Vec2D(13, 3), 0));
         rb.addPuzzle(new KeyTypePuzzle("", "test", 0, rb.getObstacle(0)));
@@ -38,6 +38,10 @@ public class GameManager {
     public void initiate(JFrame frame) {
         frame.add(gamePanel);
         gamePanel.stageStart();
+    }
+
+    public void setRoom(int roomId, Vec2D initialPos){
+        currentRoomId = roomId;
     }
 
     public Player getPlayer() {

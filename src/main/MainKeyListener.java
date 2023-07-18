@@ -37,13 +37,13 @@ public class MainKeyListener implements KeyListener {
             player.getInventory().setSelectedIdx(player.getInventory().getSelectedIdx()+1);
         }
 
-        if(c==KeyEvent.VK_P) {
+        if(c==KeyEvent.VK_F) {
             moveClear('w');
             moveClear('a');
             moveClear('s');
             moveClear('d');
 
-            gameManager.getGamePanel().getPuzzlePanel().checkPuzzle(player.getPosition());
+            player.interact();
         }
           
         if(gameManager.getGamePanel().isPuzzle()) return;

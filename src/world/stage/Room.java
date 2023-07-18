@@ -19,21 +19,37 @@ public class Room {
     public Room(int stageId, String roomName, Vec2D initialPlayerPos, BackgroundManager backgroundManager) {
         this(stageId, roomName, initialPlayerPos, backgroundManager, new ArrayList<>());
         puzzles = new ArrayList<>();
+        obstacles = new ArrayList<>();
     }
 
     public Room(int stageId, String roomName, Vec2D initialPlayerPos, BackgroundManager backgroundManager, ArrayList<Puzzle> puzzles) {
+        this(stageId, roomName, initialPlayerPos, backgroundManager, puzzles, new ArrayList<>());
+        obstacles = new ArrayList<>();
+        items = new ArrayList<>();
+    }
+
+    public Room(int stageId, String roomName, Vec2D initialPlayerPos, BackgroundManager backgroundManager, ArrayList<Puzzle> puzzles, ArrayList<Obstacle> obstacles) {
         this.stageId = stageId;
         this.roomName = roomName;
         this.initialPlayerPos = initialPlayerPos;
         this.backgroundManager = backgroundManager;
         this.puzzles = puzzles;
-        obstacles = new ArrayList<>();
-        puzzles = new ArrayList<>();
+        this.obstacles = obstacles;
         items = new ArrayList<>();
     }
 
-    public void draw() {
-        for (Obstacle obstacle : obstacles) obstacle.show();
+    public Obstacle canBeCollided(Vec2D touchPos) {
+        for(Obstacle obstacle : obstacles) {
+            if(touchPos.x == obstacle.getPosition().x && touchPos.y == obstacle.getPosition().y) {
+                return obstacle;
+            }
+        }
+
+        return null;
+    }
+
+    public void draw(Graphics2D g2) {
+        for (Obstacle obstacle : obstacles) obstacle.show(g2);
     }
 
     public void setStageId(int stageId) {
@@ -42,10 +58,6 @@ public class Room {
       
     public ArrayList<Puzzle> getPuzzles() {
         return puzzles;
-    }
-
-    public void addObstacle(Obstacle obstacle) {
-        obstacles.add(obstacle);
     }
 
     public BackgroundManager getBackgroundManager() {

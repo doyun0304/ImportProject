@@ -26,12 +26,21 @@ public class RoomBuilder {
         puzzles.add(puzzle);
     }
 
+    public void addObstacle(Obstacle obstacle) {
+        obstacle.setObstacleID(obstacles.size());
+        obstacles.add(obstacle);
+    }
+
     public BackgroundManager getBackgroundManager() {
         return backgroundManager;
     }
 
+    public Obstacle getObstacle(int ID) {
+        return obstacles.get(ID);
+    }
+
     public Room build(){
-        Room output = new Room(stageId, roomName, initialPlayerPos, backgroundManager, puzzles);
+        Room output = new Room(stageId, roomName, initialPlayerPos, backgroundManager, puzzles, obstacles);
         backgroundManager.setRoom(output);
         return output;
     }

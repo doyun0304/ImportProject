@@ -17,10 +17,13 @@ public class Images {
     public static BufferedImage[][] playerImage = new BufferedImage[4][4];
     public static BufferedImage[] puzzleImage = new BufferedImage[50];
     public static BufferedImage[] tileImage = new BufferedImage[11];
+    public static BufferedImage testObstacleImage;
 
     static{
         try {
             gshsImage = getResizedImage("gshslogo.png", tileSize, tileSize);
+            testObstacleImage = getResizedImage("test_obstacle.png", tileSize, tileSize);
+
             String[] direction = {"UP", "RIGHT", "DOWN", "LEFT"};
             for(int i=0; i<4; i++) {
                 playerImage[i][0] = getResizedImage("player_"+direction[i]+"_0.png", tileSize, tileSize);

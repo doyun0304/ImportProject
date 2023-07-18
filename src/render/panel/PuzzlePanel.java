@@ -44,11 +44,11 @@ public class PuzzlePanel extends JPanel {
         puzzle.draw(g2, 0, 0, tileSize * 25, tileSize * 15);
     }
 
-    public void checkPuzzle(Vec2D playerPosition) {
+    public void checkPuzzle(Vec2D checkPosition) {
         ArrayList<Puzzle> puzzles = currentRoom.getPuzzles();
 
         for (Puzzle currentPuzzle : puzzles) {
-            if (playerPosition.x == currentPuzzle.getPosition().x && playerPosition.y == currentPuzzle.getPosition().y) {
+            if (checkPosition.x == currentPuzzle.getPosition().x && checkPosition.y == currentPuzzle.getPosition().y) {
                 puzzle = currentPuzzle;
                 gameManager.getGamePanel().switchMode();
 

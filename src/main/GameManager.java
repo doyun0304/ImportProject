@@ -15,15 +15,18 @@ public class GameManager {
     private ArrayList<Stage> stages;
     private Player player;
     private GamePanel gamePanel;
+    private int currentStageId;
+    private int currentRoomId;
 
     public GameManager(){
         stages = new ArrayList<>();
-        StageBuilder sb = new StageBuilder(0, "");
-        RoomBuilder rb = new RoomBuilder(0, "", new Vec2D(13, 8));
-        rb.getBackgroundManager().setTiles(readRoomData(0,0));
-        rb.addObstacle(new puzzleObstacle(new Vec2D(13, 3), 0));
+        currentStageId = 0;
+        currentRoomId = 0;
+        StageBuilder sb = new StageBuilder(currentStageId, "");
+        RoomBuilder rb = new RoomBuilder(currentStageId, "", new Vec2D(13, 8));
+        rb.getBackgroundManager().setTiles(readRoomData(currentStageId, currentRoomId));
+        rb.addObstacle(new PuzzleObstacle(new Vec2D(13, 3), 0));
         rb.addPuzzle(new KeyTypePuzzle("", "test", 0, rb.getObstacle(0)));
-
         sb.addRoom(rb.build());
         stages.add(sb.build());
         gamePanel = new GamePanel(this);
@@ -47,5 +50,13 @@ public class GameManager {
 
     public GamePanel getGamePanel() {
         return gamePanel;
+    }
+
+    public int getCurrentStageId() {
+        return currentStageId;
+    }
+
+    public int getCurrentRoomId() {
+        return currentRoomId;
     }
 }

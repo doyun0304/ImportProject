@@ -20,7 +20,7 @@ public class Inventory {
     }
 
     void addItem(Item item) {
-        if(items.size()+1>=maxItemCnt) return;
+        if(items.size()>=maxItemCnt) return;
         items.add(item);
         updateDisplay();
     }
@@ -57,5 +57,11 @@ public class Inventory {
 
     private void updateDisplay(){
         player.getGamePanel().getToolPanel().updateItems();
+    }
+
+    public void clear(){
+        items.clear();
+        setSelectedIdx(0);
+        updateDisplay();
     }
 }

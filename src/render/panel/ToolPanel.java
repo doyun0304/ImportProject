@@ -16,8 +16,6 @@ import java.awt.*;
 
 import static render.RenderUtil.tileSize;
 
-// panel for toolbar - on playing / exists with PlayPanel
-
 public class ToolPanel extends JPanel {
     private GameManager gameManager;
     private Inventory inventory;

@@ -10,14 +10,14 @@ public abstract class Puzzle {
     private String roomName;
     private String puzzleName;
     private int puzzleNum;
-    private puzzleObstacle obstacle;
+    private PuzzleObstacle obstacle;
 
     public Puzzle(String roomName, String puzzleName, int puzzleNum, Obstacle obstacle) {
         this.roomName = roomName;
         this.puzzleName = puzzleName;
         this.puzzleNum = puzzleNum;
         this.puzzleImage = Images.puzzleImage[puzzleNum];
-        this.obstacle = (puzzleObstacle)obstacle;
+        this.obstacle = (PuzzleObstacle)obstacle;
     }
 
     public abstract boolean isCorrect();

@@ -26,6 +26,17 @@ public class MainKeyListener implements KeyListener {
         player = gameManager.getPlayer();
         int c = e.getKeyCode();
 
+        // DEBUG CODE
+        if(c==KeyEvent.VK_Z){
+            player.getInventory().setSelectedIdx(player.getInventory().getSelectedIdx()-1);
+        }
+        if(c==KeyEvent.VK_X){
+            player.addItem(new world.entity.item.Key("key", "lock"));
+        }
+        if(c==KeyEvent.VK_C){
+            player.getInventory().setSelectedIdx(player.getInventory().getSelectedIdx()+1);
+        }
+
         if(c==KeyEvent.VK_P) {
             moveClear('w');
             moveClear('a');

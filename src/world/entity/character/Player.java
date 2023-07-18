@@ -5,6 +5,7 @@ import render.Images;
 import util.DVec2D;
 import util.Vec2D;
 import world.entity.Direction;
+import world.entity.item.Item;
 import world.stage.Room;
 
 import java.awt.*;
@@ -26,7 +27,7 @@ public class Player {
         dPosition = new DVec2D();
         direction = Direction.UP;
         img = Images.playerImage;
-        inventory = new Inventory();
+        inventory = new Inventory(this);
     }
 
     public Player(GamePanel gamePanel){
@@ -93,5 +94,17 @@ public class Player {
             moveCondition++;
             if (moveCondition == 4) moveCondition = 0;
         }
+    }
+
+    public void addItem(Item item){
+        inventory.addItem(item);
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public GamePanel getGamePanel() {
+        return gamePanel;
     }
 }

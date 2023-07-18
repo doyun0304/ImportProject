@@ -56,7 +56,7 @@ public class Inventory {
     }
 
     private void updateDisplay(){
-        player.getGamePanel().getToolPanel().updateItems();
+        player.getGameManager().getGamePanel().getToolPanel().updateItems();
     }
 
     public void clear(){

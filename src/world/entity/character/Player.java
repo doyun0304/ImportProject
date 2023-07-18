@@ -1,5 +1,6 @@
 package world.entity.character;
 
+import main.GameManager;
 import render.panel.GamePanel;
 import render.Images;
 import util.DVec2D;
@@ -13,6 +14,7 @@ import world.stage.Room;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+import static main.ImportProject.gameManager;
 import static render.RenderUtil.tileSize;
 
 public class Player {
@@ -21,17 +23,17 @@ public class Player {
     private Direction direction;
     private final double velocity = 0.25;
     private int moveCondition;
-    private GamePanel gamePanel;
+    private GameManager gameManager;
     private BufferedImage[][] img;
     private Inventory inventory;
 
-    public Player(GamePanel gamePanel){
+    public Player(GameManager gameManager){
         dPosition = new DVec2D();
         direction = Direction.UP;
         img = Images.playerImage;
         inventory = new Inventory(this);
-        this.gamePanel = gamePanel;
-        setPosition(gamePanel.getStagePanel().getCurrentRoom().getInitialPlayerPos());
+        this.gameManager = gameManager;
+        setPosition(gameManager.getCurrentRoom().getInitialPlayerPos());
     }
 
     public void setDirection(Direction direction) {
@@ -70,10 +72,10 @@ public class Player {
             case LEFT -> touchPos.add(new Vec2D(-1,0));
         }
 
-        Obstacle obstacle = gamePanel.getStagePanel().getCurrentRoom().canBeCollided(touchPos);
+        Obstacle obstacle = gameManager.getCurrentRoom().canBeCollided(touchPos);
 
         if(obstacle != null && obstacle.isInteractable()) {
-            ((PuzzleObstacle) obstacle).interact(gamePanel);
+            ((PuzzleObstacle) obstacle).interact(gameManager.getGamePanel());
         }
     }
 
@@ -90,8 +92,8 @@ public class Player {
             case LEFT -> currentPos.add(new Vec2D(-1,0));
         }
         return (currentPos.x>=0 && currentPos.x<Room.size.x && currentPos.y>=0 && currentPos.y<Room.size.y)
-                && !gamePanel.getStagePanel().getBackgroundManager().getTile(currentPos.x, currentPos.y).canBeCollided()
-                && (gamePanel.getStagePanel().getCurrentRoom().canBeCollided(currentPos) == null);
+                && !gameManager.getGamePanel().getStagePanel().getBackgroundManager().getTile(currentPos.x, currentPos.y).canBeCollided()
+                && (gameManager.getCurrentRoom().canBeCollided(currentPos) == null);
     }
 
     public Vec2D getPosition() {
@@ -119,7 +121,7 @@ public class Player {
         return inventory;
     }
 
-    public GamePanel getGamePanel() {
-        return gamePanel;
+    public GameManager getGameManager() {
+        return gameManager;
     }
 }

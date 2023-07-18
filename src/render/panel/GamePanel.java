@@ -40,14 +40,9 @@ public class GamePanel extends JPanel implements Runnable{
         gameThread.start();
     }
 
-    void update(){
-
-    }
-
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g;
     }
 
     public void switchMode() {
@@ -104,9 +99,7 @@ public class GamePanel extends JPanel implements Runnable{
         double drawInterval = 1000000000f/frameRate;
         double nextDrawTime = System.nanoTime() + drawInterval;
         while(gameThread!=null){
-            update();
             repaint();
-
             try {
                 double remainingTime = (nextDrawTime - System.nanoTime())/1000000;
                 if(remainingTime<0) remainingTime = 0;

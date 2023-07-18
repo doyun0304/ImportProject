@@ -34,6 +34,7 @@ public class ToolPanel extends JPanel {
         itemPanel.setBorder(Borders.BLACKLINE);
         itemPanel.setBackground(Color.GRAY);
         itemPanel.setPreferredSize(new Dimension(ImportProject.screenWidth, tileSize));
+        inventory = gameManager.getPlayer().getInventory();
         for(int i=0; i<Inventory.maxItemCnt; i++) itemPanel.add(new ItemLabel(i, this));
         updateItems();
     }
@@ -41,11 +42,6 @@ public class ToolPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-    }
-
-    public void setInventory(Inventory inventory) {
-        this.inventory = inventory;
-        updateItems();
     }
 
     public Inventory getInventory() {

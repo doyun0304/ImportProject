@@ -11,26 +11,12 @@ public class Room {
     private ArrayList<Puzzle> puzzles;
     private ArrayList<FieldItem> items;
     private int stageId;
-    private String roomName;
     public static final Vec2D size = new Vec2D(25, 15);
     private Vec2D initialPlayerPos;
     private BackgroundManager backgroundManager;
 
-    public Room(int stageId, String roomName, Vec2D initialPlayerPos, BackgroundManager backgroundManager) {
-        this(stageId, roomName, initialPlayerPos, backgroundManager, new ArrayList<>());
-        puzzles = new ArrayList<>();
-        obstacles = new ArrayList<>();
-    }
-
-    public Room(int stageId, String roomName, Vec2D initialPlayerPos, BackgroundManager backgroundManager, ArrayList<Puzzle> puzzles) {
-        this(stageId, roomName, initialPlayerPos, backgroundManager, puzzles, new ArrayList<>());
-        obstacles = new ArrayList<>();
-        items = new ArrayList<>();
-    }
-
-    public Room(int stageId, String roomName, Vec2D initialPlayerPos, BackgroundManager backgroundManager, ArrayList<Puzzle> puzzles, ArrayList<Obstacle> obstacles) {
+    public Room(int stageId, Vec2D initialPlayerPos, BackgroundManager backgroundManager, ArrayList<Puzzle> puzzles, ArrayList<Obstacle> obstacles) {
         this.stageId = stageId;
-        this.roomName = roomName;
         this.initialPlayerPos = initialPlayerPos;
         this.backgroundManager = backgroundManager;
         this.puzzles = puzzles;

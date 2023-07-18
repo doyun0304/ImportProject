@@ -1,20 +1,39 @@
 package world.stage;
 
+import render.Images;
 import util.Vec2D;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
+
+import static render.RenderUtil.tileSize;
+
 public class Obstacle {
-    Vec2D position;
-    Vec2D size;
-    boolean collision = true;
+    private Vec2D position;
+    private int obstacleID;
+    private BufferedImage img;
+    protected boolean interactable = false;
 
-    Obstacle(Vec2D position, Vec2D size){
+    Obstacle(Vec2D position, int obstacleID){
         this.position = position;
-        this.size = size;
+        this.obstacleID = obstacleID;
+
+        if(obstacleID == 0) img = Images.testObstacleImage;
     }
 
-    public void show() {
+    public void show(Graphics2D g2) {
+        g2.drawImage(img, (int)(position.x*tileSize), (int)(position.y*tileSize), null);
     }
 
-    public boolean canBeCollidedWith(){
-        return collision;
+    public void setObstacleID(int ID) {
+        this.obstacleID = ID;
+    }
+
+    public Vec2D getPosition() {
+        return position.copy();
+    }
+
+    public boolean isInteractable() {
+        return interactable;
     }
 }

@@ -3,8 +3,8 @@ package world.stage;
 import util.Vec2D;
 
 public class KeyTypePuzzle extends Puzzle {
-    public KeyTypePuzzle(String roomName, String puzzleName, int puzzleNum, Vec2D position) {
-        super(roomName, puzzleName, puzzleNum, position);
+    public KeyTypePuzzle(String roomName, String puzzleName, int puzzleNum, Obstacle obstacle) {
+        super(roomName, puzzleName, puzzleNum, obstacle);
     }
 
     @Override

@@ -5,27 +5,25 @@ import util.Vec2D;
 
 import java.awt.*;
 
-import static render.RenderUtil.tileSize;
-
 public abstract class Puzzle {
     private Image puzzleImage;
     private String roomName;
     private String puzzleName;
     private int puzzleNum;
-    private Vec2D position;
+    private puzzleObstacle obstacle;
 
-    public Puzzle(String roomName, String puzzleName, int puzzleNum, Vec2D position) {
+    public Puzzle(String roomName, String puzzleName, int puzzleNum, Obstacle obstacle) {
         this.roomName = roomName;
         this.puzzleName = puzzleName;
         this.puzzleNum = puzzleNum;
         this.puzzleImage = Images.puzzleImage[puzzleNum];
-        this.position = position;
+        this.obstacle = (puzzleObstacle)obstacle;
     }
 
     public abstract boolean isCorrect();
 
     public Vec2D getPosition() {
-        return position;
+        return obstacle.getPosition();
     }
 
     public void draw(Graphics2D g2, int x, int y, int width, int height) {

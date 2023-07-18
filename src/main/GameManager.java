@@ -4,10 +4,7 @@ import render.panel.GamePanel;
 import util.Vec2D;
 import world.entity.character.Player;
 import world.entity.item.Key;
-import world.stage.KeyTypePuzzle;
-import world.stage.RoomBuilder;
-import world.stage.Stage;
-import world.stage.StageBuilder;
+import world.stage.*;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -24,7 +21,8 @@ public class GameManager {
         StageBuilder sb = new StageBuilder(0, "");
         RoomBuilder rb = new RoomBuilder(0, "", new Vec2D(13, 8));
         rb.getBackgroundManager().setTiles(readRoomData(0,0));
-        rb.addPuzzle(new KeyTypePuzzle("", "test", 0, new Vec2D(3,5)));
+        rb.addObstacle(new puzzleObstacle(new Vec2D(13, 3), 0));
+        rb.addPuzzle(new KeyTypePuzzle("", "test", 0, rb.getObstacle(0)));
 
         sb.addRoom(rb.build());
         stages.add(sb.build());

@@ -14,7 +14,7 @@ public class Stage {
     }
 
     public void draw() {
-        for (Room room : rooms) room.draw();
+        //for (Room room : rooms) room.draw();
     }
 
     public void setRooms(ArrayList<Room> rooms){

@@ -39,6 +39,7 @@ public class StagePanel extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
         backgroundManager.draw(g2);
         gameManager.getPlayer().draw(g2);
+        currentRoom.draw(g2);
 
         g2.setColor(Color.RED);
 

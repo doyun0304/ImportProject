@@ -6,7 +6,7 @@ import util.DVec2D;
 import util.Vec2D;
 import world.entity.Direction;
 import world.entity.item.Item;
-import world.stage.puzzleObstacle;
+import world.stage.PuzzleObstacle;
 import world.stage.Obstacle;
 import world.stage.Room;
 
@@ -25,15 +25,11 @@ public class Player {
     private BufferedImage[][] img;
     private Inventory inventory;
 
-    public Player(){
+    public Player(GamePanel gamePanel){
         dPosition = new DVec2D();
         direction = Direction.UP;
         img = Images.playerImage;
         inventory = new Inventory(this);
-    }
-
-    public Player(GamePanel gamePanel){
-        this();
         this.gamePanel = gamePanel;
         setPosition(gamePanel.getStagePanel().getCurrentRoom().getInitialPlayerPos());
     }
@@ -77,7 +73,7 @@ public class Player {
         Obstacle obstacle = gamePanel.getStagePanel().getCurrentRoom().canBeCollided(touchPos);
 
         if(obstacle != null && obstacle.isInteractable()) {
-            ((puzzleObstacle) obstacle).interact(gamePanel);
+            ((PuzzleObstacle) obstacle).interact(gamePanel);
         }
     }
 

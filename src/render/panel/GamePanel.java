@@ -11,7 +11,6 @@ import render.layout.linear.Orientation;
 import javax.swing.*;
 import java.awt.*;
 
-// Panel for stage screen - play screen.
 public class GamePanel extends JPanel implements Runnable{
     private Thread gameThread;
     private StagePanel stagePanel;

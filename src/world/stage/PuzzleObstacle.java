@@ -3,8 +3,8 @@ package world.stage;
 import render.panel.GamePanel;
 import util.Vec2D;
 
-public class puzzleObstacle extends Obstacle implements Interactable {
-    public puzzleObstacle(Vec2D position, int obstacleID) {
+public class PuzzleObstacle extends Obstacle implements Interactable {
+    public PuzzleObstacle(Vec2D position, int obstacleID) {
         super(position, obstacleID);
         super.interactable = true;
     }

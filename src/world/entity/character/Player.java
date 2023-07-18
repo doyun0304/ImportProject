@@ -27,7 +27,7 @@ public class Player {
         dPosition = new DVec2D();
         direction = Direction.UP;
         img = Images.playerImage;
-        inventory = new Inventory();
+        inventory = new Inventory(this);
     }
 
     public Player(GamePanel gamePanel){
@@ -102,5 +102,9 @@ public class Player {
 
     public Inventory getInventory() {
         return inventory;
+    }
+
+    public GamePanel getGamePanel() {
+        return gamePanel;
     }
 }

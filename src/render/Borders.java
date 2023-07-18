@@ -7,9 +7,6 @@ import java.awt.*;
 
 public class Borders {
     public static final Border BLACKLINE = BorderFactory.createLineBorder(Color.BLACK);
-    public static final Border RAISEDETCHED = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
-    public static final Border LOWEREDETCHED = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
-    public static final Border RAISEDBEVEL = BorderFactory.createRaisedBevelBorder();
-    public static final Border LOWEREDBEVEL = BorderFactory.createLoweredBevelBorder();
-    public static final Border EMPTY = BorderFactory.createEmptyBorder();
+    public static final Border SELECTEDITEM = BorderFactory.createMatteBorder(4, 4, 4, 4, Color.WHITE);
+    public static final Border NONSELECTEDITEM = BorderFactory.createLoweredBevelBorder();
 }

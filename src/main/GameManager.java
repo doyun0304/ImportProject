@@ -3,6 +3,7 @@ package main;
 import render.panel.GamePanel;
 import util.Vec2D;
 import world.entity.character.Player;
+import world.entity.item.Key;
 import world.stage.KeyTypePuzzle;
 import world.stage.RoomBuilder;
 import world.stage.Stage;
@@ -30,6 +31,7 @@ public class GameManager {
         gamePanel = new GamePanel(this);
         player = new Player(gamePanel);
         gamePanel.getToolPanel().setInventory(player.getInventory());
+        player.addItem(new Key("key01", "lock01"));
     }
 
     public void initiate(JFrame frame) {

@@ -17,9 +17,10 @@ public class ItemLabel extends JLabel {
     public ItemLabel(int idx, ToolPanel toolPanel){
         this.idx = idx;
         this.toolPanel = toolPanel;
-        setBorder(Borders.LOWEREDBEVEL);
+        setBorder(Borders.NONSELECTEDITEM);
         setSize(tileSize, tileSize);
         setPreferredSize(new Dimension(tileSize, tileSize));
+        update();
     }
 
     @Override
@@ -34,8 +35,9 @@ public class ItemLabel extends JLabel {
         }
     }
 
-    private void update(){
+    public void update(){
         if(toolPanel.getInventory()!=null) {
+            setBorder(toolPanel.getInventory().getSelectedIdx()==idx?Borders.SELECTEDITEM:Borders.NONSELECTEDITEM);
             item = toolPanel.getInventory().getItem(idx);
         }
     }

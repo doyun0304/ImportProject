@@ -9,17 +9,20 @@ import java.util.ArrayList;
 public class Inventory {
     private ArrayList<Item> items;
     private int selectedIdx;
+    private Player player;
 
     public static final int maxItemCnt = 25;
 
-    public Inventory() {
+    public Inventory(Player player) {
         items = new ArrayList<>();
         selectedIdx = 0;
-        addItem(new Key("key01", "lock01"));
+        this.player = player;
     }
 
     void addItem(Item item) {
+        if(items.size()+1>=maxItemCnt) return;
         items.add(item);
+        updateDisplay();
     }
 
     Item removeItem(int i) {
@@ -35,5 +38,24 @@ public class Inventory {
         for(int i=0; i<25; i++){
             if(i<items.size()) items.get(i).draw(g2, i);
         }
+    }
+
+    public int getSelectedIdx() {
+        return selectedIdx;
+    }
+
+    public Item getSelectedItem(){
+        if(selectedIdx<items.size()) return items.get(selectedIdx);
+        else return null;
+    }
+
+    public void setSelectedIdx(int selectedIdx) {
+        int i = selectedIdx%maxItemCnt;
+        this.selectedIdx = i<0?i+25:i;
+        updateDisplay();
+    }
+
+    private void updateDisplay(){
+        player.getGamePanel().getToolPanel().updateItems();
     }
 }

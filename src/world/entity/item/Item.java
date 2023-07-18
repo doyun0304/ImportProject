@@ -25,4 +25,8 @@ public abstract class Item {
     public BufferedImage getImg() {
         return img;
     }
+
+    public String getName() {
+        return name;
+    }
 }

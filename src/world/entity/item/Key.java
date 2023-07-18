@@ -1,5 +1,7 @@
 package world.entity.item;
 
+import render.Images;
+
 public class Key extends Item {
     String lockName;
     public Key(String name) {
@@ -8,5 +10,6 @@ public class Key extends Item {
     public Key(String name, String lockName){
         super(name);
         this.lockName = lockName;
+        img = Images.gshsImage;
     }
 }

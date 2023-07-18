@@ -29,6 +29,7 @@ public class GameManager {
         stages.add(sb.build());
         gamePanel = new GamePanel(this);
         player = new Player(gamePanel);
+        gamePanel.getToolPanel().setInventory(player.getInventory());
     }
 
     public void initiate(JFrame frame) {

@@ -35,7 +35,7 @@ public class Room {
     }
 
     public void draw(Graphics2D g2) {
-        for (Obstacle obstacle : obstacles) obstacle.show(g2);
+        for (Obstacle obstacle : obstacles) obstacle.draw(g2);
     }
 
     public void setStageId(int stageId) {

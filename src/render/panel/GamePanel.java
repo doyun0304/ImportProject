@@ -62,6 +62,7 @@ public class GamePanel extends JPanel implements Runnable{
         toolPanel.setVisible(false);
         puzzlePanel.setVisible(true);
         answerPanel.setVisible(true);
+        answerPanel.textField.setText("");
         setPreferredSize(new Dimension(ImportProject.screenWidth, ImportProject.screenHeight));
         add(puzzlePanel, new LinearConstraints().setWeight(15).setLinearSpace(LinearSpace.MATCH_PARENT));
         add(answerPanel, new LinearConstraints().setWeight(2).setLinearSpace(LinearSpace.MATCH_PARENT));
@@ -69,7 +70,6 @@ public class GamePanel extends JPanel implements Runnable{
         remove(toolPanel);
         setDoubleBuffered(true);
         setFocusable(true);
-        requestFocus();
         setVisible(true);
     }
 
@@ -92,6 +92,10 @@ public class GamePanel extends JPanel implements Runnable{
 
     public PuzzlePanel getPuzzlePanel() {
         return puzzlePanel;
+    }
+
+    public AnswerPanel getAnswerPanel() {
+        return answerPanel;
     }
 
     @Override
@@ -117,5 +121,9 @@ public class GamePanel extends JPanel implements Runnable{
 
     public ToolPanel getToolPanel() {
         return toolPanel;
+    }
+
+    public MainKeyListener getKeyListener() {
+        return keyListener;
     }
 }

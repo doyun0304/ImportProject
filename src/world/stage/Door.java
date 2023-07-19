@@ -18,12 +18,20 @@ public class Door extends PuzzleObstacle {
     @Override
     public void interact(GameManager gameManager) {
         super.interact(gameManager);
-        if(gameManager.getGamePanel().getPuzzlePanel().getPuzzle().isSolved()) {
+        if (gameManager.getGamePanel().getPuzzlePanel().getPuzzle().isSolved()) {
             gameManager.setRoom(nextDoor.currentRoomID, nextDoor.outPosition);
         }
     }
 
     public void setNextDoor(Door nextDoor) {
         this.nextDoor = nextDoor;
+    }
+
+    public Door getNextDoor() {
+        return nextDoor;
+    }
+
+    public Vec2D getOutPosition() {
+        return outPosition;
     }
 }

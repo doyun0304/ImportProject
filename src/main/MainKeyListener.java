@@ -48,7 +48,11 @@ public class MainKeyListener implements KeyListener {
 
             player.interact();
         }
-          
+
+        if(c==KeyEvent.VK_ESCAPE) {
+            gameManager.getGamePanel().switchMode();
+        }
+
         if(gameManager.getGamePanel().isPuzzle()) return;
 
         if(c==KeyEvent.VK_W) {
@@ -95,6 +99,10 @@ public class MainKeyListener implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
+        if(gameManager.getGamePanel().isPuzzle()) {
+            gameManager.getGamePanel().getAnswerPanel().setFocus();
+        }
+
         int c = e.getKeyCode();
         if(c==KeyEvent.VK_W||c==KeyEvent.VK_A||c==KeyEvent.VK_S||c==KeyEvent.VK_D) {
             moveClear('w');
@@ -103,6 +111,22 @@ public class MainKeyListener implements KeyListener {
             moveClear('d');
             player.updateMoveCondition(true);
         }
+    }
+
+    public void setUpCnt(int upCnt) {
+        this.upCnt = upCnt;
+    }
+
+    public void setDownCnt(int downCnt) {
+        this.downCnt = downCnt;
+    }
+
+    public void setLeftCnt(int leftCnt) {
+        this.leftCnt = leftCnt;
+    }
+
+    public void setRightCnt(int rightCnt) {
+        this.rightCnt = rightCnt;
     }
 
     private void moveClear(char ch) {

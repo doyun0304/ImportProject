@@ -9,6 +9,8 @@ import world.stage.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import static render.RenderUtil.tileSize;
@@ -37,6 +39,14 @@ public class PuzzlePanel extends JPanel {
         setLayout(new GridLayout(1, 0));
         setBorder(Borders.BLACKLINE);
         setBackground(Color.GREEN);
+
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                requestFocus();
+            }
+        });
     }
 
     @Override

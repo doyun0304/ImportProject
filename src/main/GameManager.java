@@ -27,8 +27,8 @@ public class GameManager {
         StageBuilder sb = new StageBuilder(currentStageId, "");
         RoomBuilder rb1 = new RoomBuilder(currentStageId, new Vec2D(1, 1));
         rb1.getBackgroundManager().setTiles(readRoomData(currentStageId, currentRoomId));
-        rb1.addObstacle(new PuzzleObstacle(new Vec2D(13, 3), 0));
-        rb1.addPuzzle(new KeyTypePuzzle("", "test", 0, rb1.getObstacle(0), "6"));
+        rb1.addObstacle(new PuzzleObstacle(new Vec2D(3, 3), 0));
+        rb1.addPuzzle(new KeyTypePuzzle("", "test", 0, rb1.getObstacle(0), "6", "half half"));
         sb.addRoom(rb1.build());
         RoomBuilder rb2 = new RoomBuilder(currentStageId, new Vec2D(1, 1));
         rb2.getBackgroundManager().setTiles(readRoomData(currentStageId, 1));

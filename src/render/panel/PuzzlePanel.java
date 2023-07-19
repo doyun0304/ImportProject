@@ -2,6 +2,8 @@ package render.panel;
 
 import main.GameManager;
 import render.Borders;
+import render.layout.linear.LinearLayout;
+import render.layout.linear.Orientation;
 import util.Vec2D;
 import world.stage.*;
 
@@ -12,8 +14,9 @@ import java.util.ArrayList;
 import static render.RenderUtil.tileSize;
 
 public class PuzzlePanel extends JPanel {
-    GameManager gameManager;
-    Puzzle puzzle;
+    private GameManager gameManager;
+    private Puzzle puzzle;
+
     private Stage currentStage;
     private int currentStageId;
     private Room currentRoom;
@@ -50,10 +53,14 @@ public class PuzzlePanel extends JPanel {
         for (Puzzle currentPuzzle : puzzles) {
             if (checkPosition.x == currentPuzzle.getPosition().x && checkPosition.y == currentPuzzle.getPosition().y) {
                 puzzle = currentPuzzle;
-                gameManager.getGamePanel().switchMode();
+                if(!puzzle.isSolved())gameManager.getGamePanel().switchMode();
 
                 return;
             }
         }
+    }
+
+    public Puzzle getPuzzle() {
+        return puzzle;
     }
 }

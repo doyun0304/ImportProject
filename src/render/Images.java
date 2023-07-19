@@ -18,11 +18,14 @@ public class Images {
     public static BufferedImage[] puzzleImage = new BufferedImage[50];
     public static BufferedImage[] tileImage = new BufferedImage[11];
     public static BufferedImage testObstacleImage;
+    public static BufferedImage enterImage, hintImage;
 
     static{
         try {
             gshsImage = getResizedImage("gshslogo.png", tileSize, tileSize);
             testObstacleImage = getResizedImage("test_obstacle.png", tileSize, tileSize);
+            enterImage = getResizedImage("button_ENTER.png", tileSize * 3, tileSize * 2);
+            hintImage = getResizedImage("button_HINT.png", tileSize * 3, tileSize * 2);
 
             String[] direction = {"UP", "RIGHT", "DOWN", "LEFT"};
             for(int i=0; i<4; i++) {

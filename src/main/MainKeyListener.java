@@ -37,7 +37,7 @@ public class MainKeyListener implements KeyListener {
             player.getInventory().setSelectedIdx(player.getInventory().getSelectedIdx()+1);
         }
         if(c==KeyEvent.VK_P){
-            gameManager.setRoom(1-gameManager.getCurrentRoomId(), new Vec2D(1, 1));
+            //gameManager.setRoom(1-gameManager.getCurrentRoomId(), new Vec2D(1, 1));
         }
 
         if(c==KeyEvent.VK_F) {

@@ -21,7 +21,7 @@ public class Obstacle {
         if(obstacleID == 0) img = Images.testObstacleImage;
     }
 
-    public void show(Graphics2D g2) {
+    public void draw(Graphics2D g2) {
         g2.drawImage(img, (int)(position.x*tileSize), (int)(position.y*tileSize), null);
     }
 

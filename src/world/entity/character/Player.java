@@ -73,7 +73,7 @@ public class Player {
         Obstacle obstacle = gameManager.getCurrentRoom().canBeCollided(touchPos);
 
         if(obstacle != null && obstacle.isInteractable()) {
-            ((PuzzleObstacle) obstacle).interact(gameManager.getGamePanel());
+            ((PuzzleObstacle) obstacle).interact(gameManager);
         }
     }
 

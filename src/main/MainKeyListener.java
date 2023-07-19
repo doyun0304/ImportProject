@@ -1,5 +1,6 @@
 package main;
 
+import render.panel.GamePanel;
 import util.Vec2D;
 import world.entity.Direction;
 import world.entity.character.Player;
@@ -26,80 +27,98 @@ public class MainKeyListener implements KeyListener {
         player = gameManager.getPlayer();
         int c = e.getKeyCode();
 
-        // DEBUG CODE
-        if(c==KeyEvent.VK_Z){
-            player.getInventory().setSelectedIdx(player.getInventory().getSelectedIdx()-1);
-        }
-        if(c==KeyEvent.VK_X){
-            player.addItem(new world.entity.item.Key("key", "lock"));
-        }
-        if(c==KeyEvent.VK_C){
-            player.getInventory().setSelectedIdx(player.getInventory().getSelectedIdx()+1);
-        }
-        if(c==KeyEvent.VK_P){
-            //gameManager.setRoom(1-gameManager.getCurrentRoomId(), new Vec2D(1, 1));
-        }
+        switch(gameManager.getGamePanel().getGameMode()){
+            case GamePanel.MAIN-> {
+                if(c==KeyEvent.VK_UP){
+                    gameManager.getGamePanel().getMainPanel().setMenuNumber(gameManager.getGamePanel().getMainPanel().getMenuNumber()-1);
+                }
+                if(c==KeyEvent.VK_DOWN){
+                    gameManager.getGamePanel().getMainPanel().setMenuNumber(gameManager.getGamePanel().getMainPanel().getMenuNumber()+1);
+                }
+                if(c==KeyEvent.VK_ENTER || c==KeyEvent.VK_SPACE){
+                    gameManager.getGamePanel().getMainPanel().menuSelect();
+                }
+            }
+            case GamePanel.GAME -> {
+                // DEBUG CODE
+                if (c == KeyEvent.VK_Z) {
+                    player.getInventory().setSelectedIdx(player.getInventory().getSelectedIdx() - 1);
+                }
+                if (c == KeyEvent.VK_X) {
+                    player.addItem(new world.entity.item.Key("key", "lock"));
+                }
+                if (c == KeyEvent.VK_C) {
+                    player.getInventory().setSelectedIdx(player.getInventory().getSelectedIdx() + 1);
+                }
+                if (c == KeyEvent.VK_F) {
+                    moveClear('w');
+                    moveClear('a');
+                    moveClear('s');
+                    moveClear('d');
 
-        if(c==KeyEvent.VK_F) {
-            moveClear('w');
-            moveClear('a');
-            moveClear('s');
-            moveClear('d');
+                    player.interact();
+                }
 
-            player.interact();
-        }
+                if (c == KeyEvent.VK_W) {
+                    moveClear('a');
+                    moveClear('s');
+                    moveClear('d');
 
-        if(c==KeyEvent.VK_ESCAPE) {
-            gameManager.getGamePanel().switchMode();
-        }
+                    player.setDirection(Direction.UP);
+                    player.move();
+                    player.updateMoveCondition(false);
+                    upCnt++;
+                    upCnt %= 4;
+                }
+                if (c == KeyEvent.VK_A) {
+                    moveClear('w');
+                    moveClear('s');
+                    moveClear('d');
 
-        if(gameManager.getGamePanel().isPuzzle()) return;
+                    player.setDirection(Direction.LEFT);
+                    player.move();
+                    player.updateMoveCondition(false);
+                    leftCnt++;
+                    leftCnt %= 4;
+                }
+                if (c == KeyEvent.VK_S) {
+                    moveClear('w');
+                    moveClear('a');
+                    moveClear('d');
 
-        if(c==KeyEvent.VK_W) {
-            moveClear('a');
-            moveClear('s');
-            moveClear('d');
+                    player.setDirection(Direction.DOWN);
+                    player.move();
+                    player.updateMoveCondition(false);
+                    downCnt++;
+                    downCnt %= 4;
+                }
+                if (c == KeyEvent.VK_D) {
+                    moveClear('w');
+                    moveClear('a');
+                    moveClear('s');
 
-            player.setDirection(Direction.UP);
-            player.move();
-            player.updateMoveCondition(false);
-            upCnt++; upCnt %= 4;
-        }
-        if(c==KeyEvent.VK_A) {
-            moveClear('w');
-            moveClear('s');
-            moveClear('d');
+                    player.setDirection(Direction.RIGHT);
+                    player.move();
+                    player.updateMoveCondition(false);
+                    rightCnt++;
+                    rightCnt %= 4;
+                }
+            }
+            case GamePanel.PUZZLE -> {
+                if (c == KeyEvent.VK_ESCAPE) {
+                    gameManager.getGamePanel().setStagePanel();
+                }
+                if (c == KeyEvent.VK_F) {
+                    gameManager.getGamePanel().setStagePanel();
+                }
 
-            player.setDirection(Direction.LEFT);
-            player.move();
-            player.updateMoveCondition(false);
-            leftCnt++; leftCnt %= 4;
-        }
-        if(c==KeyEvent.VK_S) {
-            moveClear('w');
-            moveClear('a');
-            moveClear('d');
-
-            player.setDirection(Direction.DOWN);
-            player.move();
-            player.updateMoveCondition(false);
-            downCnt++; downCnt %= 4;
-        }
-        if(c==KeyEvent.VK_D) {
-            moveClear('w');
-            moveClear('a');
-            moveClear('s');
-
-            player.setDirection(Direction.RIGHT);
-            player.move();
-            player.updateMoveCondition(false);
-            rightCnt++; rightCnt %= 4;
+            }
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if(gameManager.getGamePanel().isPuzzle()) {
+        if(gameManager.getGamePanel().getGameMode()==GamePanel.PUZZLE) {
             gameManager.getGamePanel().getAnswerPanel().setFocus();
         }
 

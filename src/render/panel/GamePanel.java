@@ -13,15 +13,18 @@ import java.awt.*;
 
 public class GamePanel extends JPanel implements Runnable{
     private Thread gameThread;
+    private MainPanel mainPanel;
     private StagePanel stagePanel;
     private ToolPanel toolPanel;
     private PuzzlePanel puzzlePanel;
     private AnswerPanel answerPanel;
     private MainKeyListener keyListener;
     private GameManager gameManager;
-    private final int frameRate = 60;
-
     private boolean isPuzzle = false;
+    private int gameMode;
+    public static final int MAIN = 0;
+    public static final int GAME = 1;
+    public static final int PUZZLE = 2;
 
     public GamePanel(GameManager gameManager){
         this.gameManager = gameManager;
@@ -30,9 +33,11 @@ public class GamePanel extends JPanel implements Runnable{
         toolPanel = new ToolPanel(gameManager);
         puzzlePanel = new PuzzlePanel(gameManager);
         answerPanel = new AnswerPanel(gameManager);
-
+        mainPanel = new MainPanel(gameManager);
+        setPreferredSize(new Dimension(ImportProject.screenWidth, ImportProject.screenHeight));
         addKeyListener(keyListener);
-        setStagePanel();
+
+        setMainPanel();
     }
 
     public void stageStart(){
@@ -45,49 +50,52 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
     }
 
-    public void switchMode() {
-        isPuzzle = !isPuzzle;
-
-        if(isPuzzle) setPuzzlePanel();
-        else setStagePanel();
-    }
-
-    public boolean isPuzzle() {
-        return isPuzzle;
+    public void setMainPanel(){
+        gameMode = MAIN;
+        setLayout(new BorderLayout());
+        mainPanel.setVisible(true);
+        stagePanel.setVisible(false);
+        toolPanel.setVisible(false);
+        puzzlePanel.setVisible(false);
+        answerPanel.setVisible(false);
+        removeAll();
+        add(mainPanel);
+        mainPanel.initiate();
+        setFocusable(true);
+        requestFocus();
     }
 
     public void setPuzzlePanel() {
+        gameMode = PUZZLE;
         setLayout(new LinearLayout(Orientation.VERTICAL, 0));
+        mainPanel.setVisible(false);
         stagePanel.setVisible(false);
         toolPanel.setVisible(false);
         puzzlePanel.setVisible(true);
         answerPanel.setVisible(true);
         answerPanel.textField.setText("");
-        setPreferredSize(new Dimension(ImportProject.screenWidth, ImportProject.screenHeight));
+        removeAll();
         add(puzzlePanel, new LinearConstraints().setWeight(15).setLinearSpace(LinearSpace.MATCH_PARENT));
         add(answerPanel, new LinearConstraints().setWeight(2).setLinearSpace(LinearSpace.MATCH_PARENT));
-        remove(stagePanel);
-        remove(toolPanel);
         setDoubleBuffered(true);
         setFocusable(true);
-        setVisible(true);
+        requestFocus();
     }
 
     public void setStagePanel() {
+        gameMode = GAME;
+        mainPanel.setVisible(false);
         stagePanel.setVisible(true);
         toolPanel.setVisible(true);
         puzzlePanel.setVisible(false);
         answerPanel.setVisible(false);
+        removeAll();
         setLayout(new LinearLayout(Orientation.VERTICAL, 0));
-        setPreferredSize(new Dimension(ImportProject.screenWidth, ImportProject.screenHeight));
         add(stagePanel, new LinearConstraints().setWeight(15).setLinearSpace(LinearSpace.MATCH_PARENT));
         add(toolPanel, new LinearConstraints().setWeight(2).setLinearSpace(LinearSpace.MATCH_PARENT));
-        remove(puzzlePanel);
-        remove(answerPanel);
         setDoubleBuffered(true);
         setFocusable(true);
         requestFocus();
-        setVisible(true);
     }
 
     public PuzzlePanel getPuzzlePanel() {
@@ -100,7 +108,8 @@ public class GamePanel extends JPanel implements Runnable{
 
     @Override
     public void run() {
-        double drawInterval = 1000000000f/frameRate;
+        int frameRate = 60;
+        double drawInterval = 1000000000f/ frameRate;
         double nextDrawTime = System.nanoTime() + drawInterval;
         while(gameThread!=null){
             repaint();
@@ -123,7 +132,15 @@ public class GamePanel extends JPanel implements Runnable{
         return toolPanel;
     }
 
+    public int getGameMode() {
+        return gameMode;
+    }
+
     public MainKeyListener getKeyListener() {
         return keyListener;
+    }
+
+    public MainPanel getMainPanel() {
+        return mainPanel;
     }
 }

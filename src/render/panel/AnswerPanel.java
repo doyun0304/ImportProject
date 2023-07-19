@@ -42,7 +42,7 @@ public class AnswerPanel extends JPanel {
             public void keyPressed(KeyEvent e) {
                 super.keyPressed(e);
                 if(e.getKeyCode()==KeyEvent.VK_ESCAPE) {
-                    gameManager.getGamePanel().switchMode();
+                    gameManager.getGamePanel().setStagePanel();
                 }
             }
         });
@@ -52,7 +52,7 @@ public class AnswerPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 gameManager.getGamePanel().getPuzzlePanel().getPuzzle().checkAnswer(textField.getText());
                 if(gameManager.getGamePanel().getPuzzlePanel().getPuzzle().isSolved()) {
-                    gameManager.getGamePanel().switchMode();
+                    gameManager.getGamePanel().setStagePanel();
                 }
 
                 else {

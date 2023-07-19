@@ -15,6 +15,7 @@ public class Images {
     public static final String assetPath = "src/assets/";
     public static BufferedImage gshsImage;
     public static BufferedImage[][] playerImage = new BufferedImage[4][4];
+    public static BufferedImage[] mainPlayerImage = new BufferedImage[4];
     public static BufferedImage[] puzzleImage = new BufferedImage[50];
     public static BufferedImage[] tileImage = new BufferedImage[11];
     public static BufferedImage testObstacleImage;
@@ -34,7 +35,8 @@ public class Images {
                 playerImage[i][2] = getResizedImage("player_"+direction[i]+"_0.png", tileSize, tileSize);
                 playerImage[i][3] = getResizedImage("player_"+direction[i]+"_2.png", tileSize, tileSize);
             }
-          
+            mainPlayerImage[0] = getResizedImage("player_DOWN_1.png", tileSize*6, tileSize*6);
+            mainPlayerImage[1] = getResizedImage("player_DOWN_2.png", tileSize*6, tileSize*6);
             for(int i=0; i<TileType.values().length; i++) {
                 tileImage[i] = getResizedImage("tile_"+TileType.get(i)+".png", tileSize, tileSize);
             }

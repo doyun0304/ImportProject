@@ -53,7 +53,7 @@ public class PuzzlePanel extends JPanel {
         for (Puzzle currentPuzzle : puzzles) {
             if (checkPosition.x == currentPuzzle.getPosition().x && checkPosition.y == currentPuzzle.getPosition().y) {
                 puzzle = currentPuzzle;
-                if(!puzzle.isSolved())gameManager.getGamePanel().switchMode();
+                if(!puzzle.isSolved()) gameManager.getGamePanel().switchMode();
 
                 return;
             }

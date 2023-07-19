@@ -7,7 +7,6 @@ import java.awt.*;
 
 public abstract class Puzzle {
     private Image puzzleImage;
-    private String roomName;
     protected String answer;
     private String hint;
     private String puzzleName;
@@ -15,14 +14,15 @@ public abstract class Puzzle {
     private PuzzleObstacle obstacle;
     protected boolean solved = false;
 
-    public Puzzle(String roomName, String puzzleName, int puzzleNum, Obstacle obstacle, String answer, String hint) {
-        this.roomName = roomName;
+    public Puzzle(String puzzleName, int puzzleNum, Obstacle obstacle, String answer, String hint) {
         this.puzzleName = puzzleName;
         this.puzzleNum = puzzleNum;
         this.puzzleImage = Images.puzzleImage[puzzleNum];
         this.obstacle = (PuzzleObstacle)obstacle;
         this.answer = answer;
         this.hint = hint;
+
+        if(answer.equals("") && hint.equals("")) solved = true;
     }
 
     public abstract void checkAnswer(String text);

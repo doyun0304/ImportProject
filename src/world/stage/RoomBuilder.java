@@ -20,7 +20,8 @@ public class RoomBuilder {
         backgroundManager = new BackgroundManager();
     }
 
-    public void addPuzzle(Puzzle puzzle) {
+    public void addPuzzle(Puzzle puzzle, int ID) {
+        ((PuzzleObstacle)getObstacle(ID)).setPuzzle(puzzle);
         puzzles.add(puzzle);
     }
 

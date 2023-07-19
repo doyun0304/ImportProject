@@ -1,6 +1,7 @@
 package render.panel;
 
 import main.GameManager;
+import main.MainKeyListener;
 import render.Images;
 import render.layout.linear.LinearConstraints;
 import render.layout.linear.LinearLayout;
@@ -9,13 +10,13 @@ import render.layout.linear.Orientation;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
 
 public class AnswerPanel extends JPanel {
-    GameManager gameManager;
-    JButton enterButton;
-    JButton hintButton;
-    JTextField textField;
+    private GameManager gameManager;
+    private JButton enterButton;
+    private JButton hintButton;
+    protected JTextField textField;
 
     public AnswerPanel(GameManager gameManager) {
         this.gameManager = gameManager;
@@ -27,6 +28,24 @@ public class AnswerPanel extends JPanel {
         enterButton.setContentAreaFilled(false);
         hintButton.setContentAreaFilled(false);
         textField.setFont(new Font("Arial", Font.PLAIN, 30));
+
+        textField.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusLost(FocusEvent e) {
+                super.focusLost(e);
+                gameManager.getGamePanel().requestFocusInWindow();
+            }
+        });
+
+        textField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                if(e.getKeyCode()==KeyEvent.VK_ESCAPE) {
+                    gameManager.getGamePanel().switchMode();
+                }
+            }
+        });
 
         enterButton.addActionListener(new AbstractAction() {
             @Override
@@ -45,7 +64,7 @@ public class AnswerPanel extends JPanel {
         hintButton.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                textField.setText(gameManager.getGamePanel().getPuzzlePanel().getPuzzle().getHint().equals("") ? "There's no HINT for you" : gameManager.getGamePanel().getPuzzlePanel().getPuzzle().getHint());
+                textField.setText(gameManager.getGamePanel().getPuzzlePanel().getPuzzle().getHint().equals("") ? "There's no HINT for you" : "HINT : " + gameManager.getGamePanel().getPuzzlePanel().getPuzzle().getHint());
             }
         });
 
@@ -53,6 +72,10 @@ public class AnswerPanel extends JPanel {
         add(textField, new LinearConstraints().setWeight(19).setLinearSpace(LinearSpace.MATCH_PARENT));
         add(enterButton, new LinearConstraints().setWeight(3).setLinearSpace(LinearSpace.MATCH_PARENT));
         add(hintButton, new LinearConstraints().setWeight(3).setLinearSpace(LinearSpace.MATCH_PARENT));
+    }
+
+    public void setFocus() {
+        textField.requestFocus();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package world.stage;
+package world.stage.obstacle;
 
 import render.Images;
 import util.Vec2D;

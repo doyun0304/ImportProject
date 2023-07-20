@@ -1,6 +1,7 @@
-package world.stage;
+package world.stage.obstacle;
 
-import util.Vec2D;
+import world.stage.obstacle.Obstacle;
+import world.stage.obstacle.Puzzle;
 
 public class KeyTypePuzzle extends Puzzle {
     public KeyTypePuzzle(String puzzleName, int puzzleNum, Obstacle obstacle, String answer, String hint) {

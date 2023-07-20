@@ -1,7 +1,6 @@
 package main;
 
 import render.panel.GamePanel;
-import util.Vec2D;
 import world.entity.Direction;
 import world.entity.character.Player;
 
@@ -50,6 +49,7 @@ public class MainKeyListener implements KeyListener {
                 if (c == KeyEvent.VK_C) {
                     player.getInventory().setSelectedIdx(player.getInventory().getSelectedIdx() + 1);
                 }
+
                 if (c == KeyEvent.VK_F) {
                     moveClear('w');
                     moveClear('a');

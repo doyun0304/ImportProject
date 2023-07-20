@@ -1,15 +1,14 @@
 package world.entity.character;
 
 import main.GameManager;
-import main.MainKeyListener;
 import render.Images;
 import util.DVec2D;
 import util.Vec2D;
 import world.entity.Direction;
 import world.entity.item.Item;
-import world.stage.Door;
-import world.stage.PuzzleObstacle;
-import world.stage.Obstacle;
+import world.stage.obstacle.Door;
+import world.stage.obstacle.PuzzleObstacle;
+import world.stage.obstacle.Obstacle;
 import world.stage.Room;
 
 import java.awt.*;
@@ -24,7 +23,7 @@ public class Player {
     private final double velocity = 0.25;
     private int moveCondition;
     private GameManager gameManager;
-    private BufferedImage[][] img;
+    private static BufferedImage[][] img;
     private Inventory inventory;
 
     public Player(GameManager gameManager){
@@ -33,7 +32,7 @@ public class Player {
         img = Images.playerImage;
         inventory = new Inventory(this);
         this.gameManager = gameManager;
-        setPosition(gameManager.getCurrentRoom().getInitialPlayerPos());
+        setPosition(gameManager.getCurrentStage().getInitialPlayerPos());
     }
 
     public void setDirection(Direction direction) {

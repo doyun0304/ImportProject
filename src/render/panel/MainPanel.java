@@ -81,6 +81,6 @@ public class MainPanel extends JPanel {
     }
 
     private void updateImg(){
-        imgCondition = (imgCondition+1)%2;
+        imgCondition = (imgCondition+1)%(playerImg.length);
     }
 }

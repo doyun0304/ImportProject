@@ -1,4 +1,6 @@
-package world.stage;
+package world.stage.tile;
+
+import world.stage.Room;
 
 import java.awt.*;
 

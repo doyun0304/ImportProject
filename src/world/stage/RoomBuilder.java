@@ -1,6 +1,9 @@
 package world.stage;
 
-import util.Vec2D;
+import world.stage.obstacle.Obstacle;
+import world.stage.obstacle.Puzzle;
+import world.stage.obstacle.PuzzleObstacle;
+import world.stage.tile.BackgroundManager;
 
 import java.util.ArrayList;
 
@@ -8,12 +11,10 @@ public class RoomBuilder {
     private int stageId;
     private ArrayList<Obstacle> obstacles;
     private ArrayList<Puzzle> puzzles;
-    private Vec2D initialPlayerPos;
     private BackgroundManager backgroundManager;
 
-    public RoomBuilder(int stageId, Vec2D initialPlayerPos){
+    public RoomBuilder(int stageId){
         this.stageId = stageId;
-        this.initialPlayerPos = initialPlayerPos;
         obstacles = new ArrayList<>();
         puzzles = new ArrayList<>();
       
@@ -39,7 +40,7 @@ public class RoomBuilder {
     }
 
     public Room build(){
-        Room output = new Room(stageId, initialPlayerPos, backgroundManager, puzzles, obstacles);
+        Room output = new Room(stageId, backgroundManager, puzzles, obstacles);
         backgroundManager.setRoom(output);
         return output;
     }

@@ -1,7 +1,6 @@
-package world.stage;
+package world.stage.obstacle;
 
 import main.GameManager;
-import render.panel.GamePanel;
 import util.Vec2D;
 
 public class PuzzleObstacle extends Obstacle implements Interactable {

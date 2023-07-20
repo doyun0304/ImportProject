@@ -1,7 +1,6 @@
 package render;
 
-import world.entity.Direction;
-import world.stage.TileType;
+import world.stage.tile.TileType;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -15,7 +14,7 @@ public class Images {
     public static final String assetPath = "src/assets/";
     public static BufferedImage gshsImage;
     public static BufferedImage[][] playerImage = new BufferedImage[4][4];
-    public static BufferedImage[] mainPlayerImage = new BufferedImage[4];
+    public static BufferedImage[] mainPlayerImage = new BufferedImage[2];
     public static BufferedImage[] puzzleImage = new BufferedImage[50];
     public static BufferedImage[] tileImage = new BufferedImage[11];
     public static BufferedImage testObstacleImage;

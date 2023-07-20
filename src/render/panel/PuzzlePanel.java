@@ -2,10 +2,9 @@ package render.panel;
 
 import main.GameManager;
 import render.Borders;
-import render.layout.linear.LinearLayout;
-import render.layout.linear.Orientation;
 import util.Vec2D;
 import world.stage.*;
+import world.stage.obstacle.Puzzle;
 
 import javax.swing.*;
 import java.awt.*;

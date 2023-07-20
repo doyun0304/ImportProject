@@ -1,4 +1,4 @@
-package world.stage;
+package world.stage.obstacle;
 
 import main.GameManager;
 import render.panel.GamePanel;

@@ -5,6 +5,9 @@ import util.Vec2D;
 import world.entity.character.Player;
 import world.entity.item.Key;
 import world.stage.*;
+import world.stage.obstacle.Door;
+import world.stage.obstacle.KeyTypePuzzle;
+import world.stage.obstacle.PuzzleObstacle;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -24,15 +27,15 @@ public class GameManager {
         stages = new ArrayList<>();
         currentStageId = 0;
         currentRoomId = 0;
-        StageBuilder sb = new StageBuilder(currentStageId, "");
-        RoomBuilder rb1 = new RoomBuilder(currentStageId, new Vec2D(1, 1));
+        StageBuilder sb = new StageBuilder(currentStageId, "", new Vec2D(1, 1));
+        RoomBuilder rb1 = new RoomBuilder(currentStageId);
         rb1.getBackgroundManager().setTiles(readRoomData(currentStageId, currentRoomId));
         rb1.addObstacle(new PuzzleObstacle(new Vec2D(3, 3), 0));
         rb1.addObstacle(new Door(new Vec2D(25, 1), 1, currentRoomId, new Vec2D(24, 1)));
         rb1.addPuzzle(new KeyTypePuzzle("test", 0, rb1.getObstacle(0), "6", "half half"), 0);
         rb1.addPuzzle(new KeyTypePuzzle("doorPuzzle", 0, rb1.getObstacle(1), "6", "half"), 1);
         sb.addRoom(rb1.build());
-        RoomBuilder rb2 = new RoomBuilder(currentStageId, new Vec2D(1, 1));
+        RoomBuilder rb2 = new RoomBuilder(currentStageId);
         rb2.getBackgroundManager().setTiles(readRoomData(currentStageId, 1));
         rb2.addObstacle(new Door(new Vec2D(-1, 1), 1, 1, new Vec2D(0, 1)));
         rb2.addPuzzle(((PuzzleObstacle)rb1.getObstacle(1)).getPuzzle(), 0);
@@ -74,11 +77,11 @@ public class GameManager {
         return gamePanel;
     }
 
-    public int getCurrentRoomId() {
-        return currentRoomId;
-    }
-
     public Room getCurrentRoom() {
         return currentRoom;
+    }
+
+    public Stage getCurrentStage() {
+        return currentStage;
     }
 }

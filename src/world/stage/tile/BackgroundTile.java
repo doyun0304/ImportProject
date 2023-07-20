@@ -1,4 +1,4 @@
-package world.stage;
+package world.stage.tile;
 
 import render.Images;
 
@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import static render.RenderUtil.tileSize;
-import static world.stage.TileType.*;
+import static world.stage.tile.TileType.*;
 
 public class BackgroundTile {
     private BufferedImage img;

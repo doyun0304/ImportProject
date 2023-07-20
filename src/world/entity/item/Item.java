@@ -18,6 +18,10 @@ public abstract class Item {
         this.name = name;
     }
 
+    public abstract void acquire();
+    public abstract void use();
+    public abstract void discard();
+
     public void draw(Graphics2D g2, int idx){
         g2.drawImage(img, idx*tileSize, tileSize, tileSize, tileSize, null);
     }

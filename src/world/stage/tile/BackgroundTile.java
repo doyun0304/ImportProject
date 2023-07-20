@@ -16,7 +16,8 @@ public class BackgroundTile {
     public BackgroundTile(TileType type){
         this.type = type;
         img = Images.tileImage[type.toIndex()];
-        if (type == WALL) {
+        collision = type.canBeCollided();
+        if (type==WALL || type==WATER || type==FOREST) {
             collision = true;
         }
     }

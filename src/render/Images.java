@@ -19,6 +19,7 @@ public class Images {
     public static BufferedImage[] tileImage = new BufferedImage[11];
     public static BufferedImage testObstacleImage;
     public static BufferedImage enterImage, hintImage;
+    public static BufferedImage soundOnImage, soundOffImage;
 
     static{
         try {
@@ -26,6 +27,8 @@ public class Images {
             testObstacleImage = getResizedImage("test_obstacle.png", tileSize, tileSize);
             enterImage = getResizedImage("button_ENTER.png", tileSize * 3, tileSize * 2);
             hintImage = getResizedImage("button_HINT.png", tileSize * 3, tileSize * 2);
+            soundOnImage = getResizedImage("sound_ON.png", tileSize, tileSize);
+            soundOffImage = getResizedImage("sound_OFF.png", tileSize, tileSize);
 
             String[] direction = {"UP", "RIGHT", "DOWN", "LEFT"};
             for(int i=0; i<4; i++) {

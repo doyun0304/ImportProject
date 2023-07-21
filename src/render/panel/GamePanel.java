@@ -31,12 +31,12 @@ public class GamePanel extends JPanel implements Runnable{
     public GamePanel(GameManager gameManager){
         this.gameManager = gameManager;
         keyListener = new MainKeyListener(gameManager);
-        stagePanel = new StagePanel(gameManager);
+        sound = new Sound();
+        stagePanel = new StagePanel(gameManager, sound);
         toolPanel = new ToolPanel(gameManager);
         puzzlePanel = new PuzzlePanel(gameManager);
         answerPanel = new AnswerPanel(gameManager);
-        mainPanel = new MainPanel(gameManager);
-        sound = new Sound();
+        mainPanel = new MainPanel(gameManager, sound);
         setPreferredSize(new Dimension(ImportProject.screenWidth, ImportProject.screenHeight));
         addKeyListener(keyListener);
 
@@ -170,5 +170,9 @@ public class GamePanel extends JPanel implements Runnable{
 
     public MainPanel getMainPanel() {
         return mainPanel;
+    }
+
+    public Sound getSound() {
+        return sound;
     }
 }

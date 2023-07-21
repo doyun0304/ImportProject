@@ -12,4 +12,19 @@ public class Key extends Item {
         this.lockName = lockName;
         img = Images.gshsImage;
     }
+
+    @Override
+    public void acquire() {
+
+    }
+
+    @Override
+    public void use() {
+
+    }
+
+    @Override
+    public void discard() {
+
+    }
 }

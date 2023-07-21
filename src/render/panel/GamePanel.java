@@ -3,6 +3,7 @@ package render.panel;
 import main.ImportProject;
 import main.MainKeyListener;
 import main.GameManager;
+import render.Sound;
 import render.layout.linear.LinearConstraints;
 import render.layout.linear.LinearLayout;
 import render.layout.linear.LinearSpace;
@@ -20,6 +21,7 @@ public class GamePanel extends JPanel implements Runnable{
     private AnswerPanel answerPanel;
     private MainKeyListener keyListener;
     private GameManager gameManager;
+    private Sound sound;
     private boolean isPuzzle = false;
     private int gameMode;
     public static final int MAIN = 0;
@@ -34,6 +36,7 @@ public class GamePanel extends JPanel implements Runnable{
         puzzlePanel = new PuzzlePanel(gameManager);
         answerPanel = new AnswerPanel(gameManager);
         mainPanel = new MainPanel(gameManager);
+        sound = new Sound();
         setPreferredSize(new Dimension(ImportProject.screenWidth, ImportProject.screenHeight));
         addKeyListener(keyListener);
 
@@ -51,6 +54,8 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     public void setMainPanel(){
+        stopMusic();
+        playMusic(0);
         gameMode = MAIN;
         setLayout(new BorderLayout());
         mainPanel.setVisible(true);
@@ -66,6 +71,10 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     public void setPuzzlePanel() {
+        if(gameMode==MAIN){
+            stopMusic();
+            playMusic(0);
+        }
         gameMode = PUZZLE;
         setLayout(new LinearLayout(Orientation.VERTICAL, 0));
         mainPanel.setVisible(false);
@@ -83,6 +92,10 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     public void setStagePanel() {
+        if(gameMode==MAIN){
+            stopMusic();
+            playMusic(0);
+        }
         gameMode = GAME;
         mainPanel.setVisible(false);
         stagePanel.setVisible(true);
@@ -96,14 +109,6 @@ public class GamePanel extends JPanel implements Runnable{
         setDoubleBuffered(true);
         setFocusable(true);
         requestFocus();
-    }
-
-    public PuzzlePanel getPuzzlePanel() {
-        return puzzlePanel;
-    }
-
-    public AnswerPanel getAnswerPanel() {
-        return answerPanel;
     }
 
     @Override
@@ -122,6 +127,29 @@ public class GamePanel extends JPanel implements Runnable{
                 e.printStackTrace();
             }
         }
+    }
+
+    public void playMusic(int i){
+        sound.setFile(i);
+        sound.play();
+        sound.loop();
+    }
+
+    public void stopMusic(){
+        sound.stop();
+    }
+
+    public void playSE(int i){
+        sound.setFile(i);
+        sound.play();
+    }
+
+    public PuzzlePanel getPuzzlePanel() {
+        return puzzlePanel;
+    }
+
+    public AnswerPanel getAnswerPanel() {
+        return answerPanel;
     }
 
     public StagePanel getStagePanel() {

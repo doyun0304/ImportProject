@@ -24,8 +24,8 @@ public class StagePanel extends JPanel {
         gameManager.getPlayer().draw(g2);
         gameManager.getCurrentRoom().draw(g2);
         g2.setColor(Color.RED);
-        for(int i = 1; i <= getWidth() / tileSize; i++) g2.drawLine(i * tileSize, 0, i * tileSize, getHeight());
-        for(int i = 1; i <= getHeight() / tileSize; i++) g2.drawLine(0, i * tileSize, getWidth(), i * tileSize);
+//        for(int i = 1; i <= getWidth() / tileSize; i++) g2.drawLine(i * tileSize, 0, i * tileSize, getHeight());
+//        for(int i = 1; i <= getHeight() / tileSize; i++) g2.drawLine(0, i * tileSize, getWidth(), i * tileSize);
         g2.dispose();
     }
 }

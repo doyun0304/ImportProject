@@ -41,8 +41,13 @@ public class AnswerPanel extends JPanel {
             @Override
             public void keyPressed(KeyEvent e) {
                 super.keyPressed(e);
-                if(e.getKeyCode()==KeyEvent.VK_ESCAPE) {
+                int keyCode = e.getKeyCode();
+                if(keyCode==KeyEvent.VK_ESCAPE) {
                     gameManager.getGamePanel().setStagePanel();
+                }
+
+                if(keyCode==KeyEvent.VK_ENTER) {
+                    checkAnswer();
                 }
             }
         });
@@ -50,14 +55,7 @@ public class AnswerPanel extends JPanel {
         enterButton.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                gameManager.getGamePanel().getPuzzlePanel().getPuzzle().checkAnswer(textField.getText());
-                if(gameManager.getGamePanel().getPuzzlePanel().getPuzzle().isSolved()) {
-                    gameManager.getGamePanel().setStagePanel();
-                }
-
-                else {
-                    textField.setText("Wrong Answer");
-                }
+                checkAnswer();
             }
         });
 
@@ -72,6 +70,17 @@ public class AnswerPanel extends JPanel {
         add(textField, new LinearConstraints().setWeight(19).setLinearSpace(LinearSpace.MATCH_PARENT));
         add(enterButton, new LinearConstraints().setWeight(3).setLinearSpace(LinearSpace.MATCH_PARENT));
         add(hintButton, new LinearConstraints().setWeight(3).setLinearSpace(LinearSpace.MATCH_PARENT));
+    }
+
+    private void checkAnswer() {
+        gameManager.getGamePanel().getPuzzlePanel().getPuzzle().checkAnswer(textField.getText());
+        if(gameManager.getGamePanel().getPuzzlePanel().getPuzzle().isSolved()) {
+            gameManager.getGamePanel().setStagePanel();
+        }
+
+        else {
+            textField.setText("Wrong Answer");
+        }
     }
 
     public void setFocus() {

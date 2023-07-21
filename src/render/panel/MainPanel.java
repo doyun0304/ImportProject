@@ -3,10 +3,14 @@ package render.panel;
 import main.GameManager;
 import main.ImportProject;
 import render.Images;
+import render.Sound;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
+
+import static render.RenderUtil.tileSize;
 
 public class MainPanel extends JPanel {
     private GameManager gameManager;
@@ -16,11 +20,38 @@ public class MainPanel extends JPanel {
     private final static String[] menu = {"SELECT STAGE", "QUIT"};
     private long nextTime;
     private static final long walkInterval = 400000000; //0.4 s
+    private Sound sound;
+    private JButton soundButton;
 
-    public MainPanel(GameManager gameManager){
+    public MainPanel(GameManager gameManager, Sound sound){
         this.gameManager = gameManager;
+        this.sound = sound;
+
+        setLayout(null);
         setPreferredSize(new Dimension(ImportProject.screenWidth, ImportProject.screenHeight));
         initiate();
+
+        soundButton = new JButton(new ImageIcon(Images.soundOnImage));
+        soundButton.setContentAreaFilled(false);
+        soundButton.setBorderPainted(false);
+
+        soundButton.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                sound.mute();
+
+                if(sound.isMuted()) soundButton.setIcon(new ImageIcon(Images.soundOffImage));
+
+                else soundButton.setIcon(new ImageIcon(Images.soundOnImage));
+
+                gameManager.getGamePanel().requestFocus();
+            }
+        });
+
+        Insets insets = this.getInsets();
+        soundButton.setBounds(tileSize + insets.left, tileSize * 15 + insets.top, tileSize, tileSize);
+
+        this.add(soundButton);
     }
 
     public void initiate(){

@@ -50,4 +50,8 @@ public class Room {
     public BackgroundManager getBackgroundManager() {
         return backgroundManager;
     }
+
+    public Vec2D getSize() {
+        return size;
+    }
 }

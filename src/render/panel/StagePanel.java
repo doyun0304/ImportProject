@@ -52,7 +52,7 @@ public class StagePanel extends JPanel {
         g2.setColor(Color.BLACK);
         g2.fillRect(0, 0, getWidth(), getHeight());
         gameManager.getCurrentRoom().getBackgroundManager().draw(g2);
-        gameManager.getPlayer().draw(g2);
         gameManager.getCurrentRoom().draw(g2);
+        gameManager.getPlayer().draw(g2);
     }
 }

@@ -185,4 +185,20 @@ public class MainKeyListener implements KeyListener {
             }
         }
     }
+
+    public int getUpCnt() {
+        return upCnt;
+    }
+
+    public int getDownCnt() {
+        return downCnt;
+    }
+
+    public int getRightCnt() {
+        return rightCnt;
+    }
+
+    public int getLeftCnt() {
+        return leftCnt;
+    }
 }

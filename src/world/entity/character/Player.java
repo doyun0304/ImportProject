@@ -12,12 +12,16 @@ import world.stage.obstacle.Obstacle;
 import world.stage.Room;
 
 import java.awt.*;
+import java.awt.geom.Area;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 import static render.RenderUtil.tileSize;
 
 public class Player {
     private DVec2D dPosition;
+    private Vec2D roomSize;
     private Vec2D iPosition;
     private Direction direction;
     private final double velocity = 0.25;
@@ -25,6 +29,11 @@ public class Player {
     private GameManager gameManager;
     private static BufferedImage[][] img;
     private Inventory inventory;
+    private float radius;
+
+    Rectangle2D.Double rect = new Rectangle2D.Double();
+    Ellipse2D.Double circle = new Ellipse2D.Double();
+    Area area1, area2;
 
     public Player(GameManager gameManager){
         dPosition = new DVec2D();
@@ -33,6 +42,7 @@ public class Player {
         inventory = new Inventory(this);
         this.gameManager = gameManager;
         setPosition(gameManager.getCurrentStage().getInitialPlayerPos());
+        radius = 3;
     }
 
     public void setDirection(Direction direction) {
@@ -96,6 +106,24 @@ public class Player {
 
     public void draw(Graphics2D g2){
         g2.drawImage(img[direction.toIndex()][moveCondition], (int)(dPosition.x*tileSize), (int)(dPosition.y*tileSize), null);
+
+        roomSize = gameManager.getCurrentRoom().getSize();
+
+        rect.setFrame(0, 0, roomSize.x * tileSize, roomSize.y * tileSize);
+        area1 = new Area(rect);
+
+        int upCnt = getGameManager().getGamePanel().getKeyListener().getUpCnt();
+        int downCnt = getGameManager().getGamePanel().getKeyListener().getDownCnt();
+        int rightCnt = getGameManager().getGamePanel().getKeyListener().getRightCnt();
+        int leftCnt = getGameManager().getGamePanel().getKeyListener().getLeftCnt();
+
+        circle.setFrame((getPosition().x - radius + 0.5 + (rightCnt - leftCnt) * 0.25) * tileSize, (getPosition().y - radius + 0.5 + (downCnt - upCnt) * 0.25) * tileSize, radius * 2 * tileSize, radius * 2 * tileSize);
+        area2 = new Area(circle);
+
+        area1.subtract(area2);
+
+        g2.setColor(Color.black);
+        g2.fill(area1);
     }
 
     private boolean canMove(Direction direction){
